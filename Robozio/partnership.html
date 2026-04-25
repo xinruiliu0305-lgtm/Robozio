@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RoboZio | Partnership Program</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app">
+      <div data-shared="header"></div>
+      <main class="container section">
+        <h1 class="title">Partnership Program</h1>
+        <p class="sub">Grow robotics adoption across the Middle East with RoboZio partner channels and deployment ecosystem.</p>
+
+        <section class="support-layout">
+          <article class="card pad">
+            <h2>Why Partner with RoboZio</h2>
+            <ul class="support-list">
+              <li>Access to high-demand robotics categories and brands</li>
+              <li>Joint go-to-market support and regional lead sharing</li>
+              <li>Technical onboarding and integration assistance</li>
+              <li>Enterprise and government project support model</li>
+              <li>Service, rental, and maintenance revenue streams</li>
+            </ul>
+          </article>
+          <article class="card pad">
+            <h2>Partnership Tracks</h2>
+            <ul class="support-list">
+              <li>Reseller Partner</li>
+              <li>System Integrator Partner</li>
+              <li>Technology / OEM Alliance</li>
+              <li>Education Program Partner</li>
+              <li>Government Enablement Partner</li>
+            </ul>
+          </article>
+        </section>
+
+        <section class="section">
+          <article class="card pad">
+            <h2 class="title">Apply for Partnership</h2>
+            <p class="meta">For real submission delivery, replace `your_form_id` and set your real site URL in `_next`.</p>
+            <form class="form-grid" method="POST" action="https://formspree.io/f/your_form_id">
+              <input type="hidden" name="_subject" value="New RoboZio Partnership Inquiry" />
+              <input type="hidden" name="_next" value="https://your-domain.com/thank-you.html" />
+              <div><label>Company Name</label><input name="company_name" required /></div>
+              <div><label>Contact Person</label><input name="contact_name" required /></div>
+              <div><label>Work Email</label><input type="email" name="email" required /></div>
+              <div><label>Phone</label><input name="phone" /></div>
+              <div><label>Country</label><select name="country"><option>UAE</option><option>Saudi Arabia</option><option>Qatar</option><option>Kuwait</option><option>Oman</option><option>Bahrain</option></select></div>
+              <div><label>Partnership Type</label><select name="partnership_type"><option>Reseller</option><option>System Integrator</option><option>Technology Alliance</option><option>Education Partner</option><option>Government Program</option></select></div>
+              <div style="grid-column: 1 / -1;">
+                <label>Business Profile and Goals</label>
+                <textarea name="details" required></textarea>
+              </div>
+              <div class="btn-row" style="margin-top:10px;"><button class="btn btn-primary" type="submit">Submit Partnership Request</button></div>
+            </form>
+          </article>
+        </section>
+      </main>
+      <div data-shared="footer"></div>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>

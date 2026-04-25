@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RoboZio | Cart</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app">
+      <div data-shared="header"></div>
+      <main class="container section">
+        <h1 class="title">Cart & Checkout</h1>
+        <div class="steps"><span class="step active">Cart</span><span class="step active">Shipping Details</span><span class="step">Payment Method</span><span class="step">Order Summary</span></div>
+        <section class="cart-grid" style="margin-top:14px;">
+          <article class="card panel">
+            <h3>Cart Items</h3>
+            <div class="line-item"><div class="mini-thumb"><img src="https://images.unsplash.com/photo-1589254065878-42c9da997008?auto=format&fit=crop&w=300&q=80" alt="Humanoid service robot" /></div><div><strong>Humanoid Service Robot X1</strong><p class="meta">Qty: 1</p></div><div class="price">AED 43,900</div></div>
+            <div class="line-item"><div class="mini-thumb"><img src="https://images.unsplash.com/photo-1589254066213-a0c9dc853511?auto=format&fit=crop&w=300&q=80" alt="STEM robotics kit" /></div><div><strong>STEM Robotics Kit E1</strong><p class="meta">Qty: 2</p></div><div class="price">AED 2,300</div></div>
+            <div class="line-item"><div class="mini-thumb"><img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=300&q=80" alt="AI module pack" /></div><div><strong>AI Module Pack</strong><p class="meta">Qty: 1</p></div><div class="price">AED 3,950</div></div>
+            <div class="btn-row" style="margin-top:10px;"><a class="btn btn-alt" href="products.html">Continue Shopping</a></div>
+          </article>
+          <aside class="card panel">
+            <h3>Shipping Details</h3>
+            <div class="form-grid">
+              <div><label>Full Name</label><input /></div>
+              <div><label>Company</label><input /></div>
+              <div><label>Email</label><input type="email" /></div>
+              <div><label>Phone</label><input /></div>
+              <div><label>Country</label><select><option>UAE</option><option>Saudi Arabia</option><option>Qatar</option><option>Kuwait</option><option>Oman</option><option>Bahrain</option></select></div>
+              <div><label>City</label><input /></div>
+            </div>
+            <label style="margin-top:10px;">Address</label><textarea></textarea>
+            <h3>Order Summary</h3>
+            <p class="meta">Subtotal: AED 50,150</p>
+            <p class="meta">Shipping: AED 450</p>
+            <p class="meta">VAT: AED 2,530</p>
+            <p class="price">Total: AED 53,130</p>
+            <div class="btn-row"><a class="btn btn-primary" href="checkout.html">Continue to Payment</a><button class="btn btn-alt">Request Enterprise Quote</button></div>
+          </aside>
+        </section>
+      </main>
+      <div data-shared="footer"></div>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>
