@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RoboZio | Checkout</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app">
+      <div data-shared="header"></div>
+      <main class="container section">
+        <h1 class="title">Payment Method</h1>
+        <section class="cart-grid">
+          <article class="card panel">
+            <h3>Choose Payment</h3>
+            <p class="meta"><input type="radio" name="pay" checked /> Credit / Debit Card</p>
+            <p class="meta"><input type="radio" name="pay" /> Bank Transfer</p>
+            <p class="meta"><input type="radio" name="pay" /> Enterprise Invoice</p>
+            <div class="form-grid">
+              <div><label>Cardholder Name</label><input /></div>
+              <div><label>Card Number</label><input /></div>
+              <div><label>Expiry</label><input /></div>
+              <div><label>CVV</label><input /></div>
+            </div>
+          </article>
+          <aside class="card panel">
+            <h3>Final Summary</h3>
+            <p class="meta">Products: AED 50,150</p>
+            <p class="meta">Shipping: AED 450</p>
+            <p class="meta">VAT: AED 2,530</p>
+            <p class="price">Total: AED 53,130</p>
+            <div class="btn-row"><button class="btn btn-primary">Place Order</button><a class="btn btn-alt" href="cart.html">Back</a></div>
+          </aside>
+        </section>
+      </main>
+      <div data-shared="footer"></div>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>

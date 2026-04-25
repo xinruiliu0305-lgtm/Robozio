@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RoboZio | Support & Services</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app">
+      <div data-shared="header"></div>
+      <main class="container section">
+        <h1 class="title">Support & Service Platform</h1>
+        <p class="sub">Maintenance request, repair booking, spare parts inquiry, technical support, and warranty claims.</p>
+        <div class="grid g-3">
+          <article class="card pad"><h3>Maintenance Request</h3><p class="meta">Plan preventive maintenance for your robot fleet.</p></article>
+          <article class="card pad"><h3>Repair Booking</h3><p class="meta">Schedule corrective repair with local engineers.</p></article>
+          <article class="card pad"><h3>Spare Parts Inquiry</h3><p class="meta">Request specific components and sourcing support.</p></article>
+          <article class="card pad"><h3>Technical Support</h3><p class="meta">Get integration and troubleshooting assistance.</p></article>
+          <article class="card pad"><h3>Warranty Claim</h3><p class="meta">Submit warranty service requests quickly.</p></article>
+        </div>
+        <section class="section">
+          <article class="card pad">
+            <h2 class="title">Open Service Request</h2>
+            <form class="form-grid">
+              <div><label>Name</label><input /></div>
+              <div><label>Company</label><input /></div>
+              <div><label>Email</label><input type="email" /></div>
+              <div><label>Country</label><select><option>UAE</option><option>Saudi Arabia</option><option>Qatar</option><option>Kuwait</option><option>Oman</option><option>Bahrain</option></select></div>
+              <div><label>Request Type</label><select><option>Maintenance request</option><option>Repair booking</option><option>Spare parts inquiry</option><option>Technical support</option><option>Warranty claim</option></select></div>
+            </form>
+            <label style="margin-top:10px;">Details</label><textarea></textarea>
+            <div class="btn-row" style="margin-top:10px;"><button class="btn btn-primary" type="button">Submit Ticket</button></div>
+          </article>
+        </section>
+      </main>
+      <div data-shared="footer"></div>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>

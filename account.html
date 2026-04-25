@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RoboZio | Account Dashboard</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app">
+      <div data-shared="header"></div>
+      <main class="container section">
+        <h1 class="title">Account Dashboard</h1>
+        <section class="dash">
+          <aside class="card panel side">
+            <a class="active" href="#">Orders</a>
+            <a href="#">Quotes</a>
+            <a href="#">Rental Requests</a>
+            <a href="#">Service Tickets</a>
+            <a href="#">Saved Products</a>
+            <a href="#">Company Profile</a>
+          </aside>
+          <section>
+            <div class="stats">
+              <article class="card pad"><h3>16</h3><p class="meta">Orders</p></article>
+              <article class="card pad"><h3>5</h3><p class="meta">Quotes</p></article>
+              <article class="card pad"><h3>3</h3><p class="meta">Rental Requests</p></article>
+            </div>
+            <article class="card panel" style="margin-top:10px;">
+              <h3>Recent Activity</h3>
+              <p class="meta">Order #RZ-2049 shipped to Abu Dhabi.</p>
+              <p class="meta">Quote #Q-883 requested for security robot fleet.</p>
+              <p class="meta">Service ticket #S-112 accepted for on-site repair.</p>
+            </article>
+          </section>
+        </section>
+      </main>
+      <div data-shared="footer"></div>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>
