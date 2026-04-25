@@ -375,6 +375,16 @@ main { flex: 1; }
 
 .pad { padding: 16px; }
 
+.card-link {
+  display: block;
+  transition: transform .15s ease, border-color .15s ease;
+}
+
+.card-link:hover {
+  transform: translateY(-2px);
+  border-color: rgba(0, 209, 255, 0.4);
+}
+
 .badge {
   display: inline-flex;
   align-items: center;
@@ -432,6 +442,20 @@ main { flex: 1; }
 .panel { padding: 14px; }
 .filter-block { border-top: 1px solid var(--line); padding: 10px 0; }
 .filter-block:first-child { border-top: 0; }
+
+.filter-option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+  color: var(--muted);
+  font-size: .88rem;
+}
+
+.filter-option input {
+  width: auto;
+  margin: 0;
+}
 
 .sort-row {
   display: flex;

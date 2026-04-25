@@ -120,5 +120,95 @@ function wireModal() {
   close.addEventListener("click", () => modal.classList.remove("show"));
 }
 
+function initProductFilters() {
+  const page = document.querySelector("[data-page='products']");
+  if (!page) return;
+
+  const form = document.getElementById("product-filters");
+  const resetButton = document.getElementById("reset-filters");
+  const cards = Array.from(document.querySelectorAll(".product-item"));
+  const results = document.getElementById("results-count");
+  const emptyState = document.getElementById("empty-products-message");
+  if (!form || cards.length === 0 || !results || !emptyState) return;
+
+  const syncUrl = (selectedCategories, selectedAvailability, selectedPrice) => {
+    const params = new URLSearchParams(window.location.search);
+    params.delete("category");
+    params.delete("availability");
+    params.delete("price");
+
+    selectedCategories.forEach((value) => params.append("category", value));
+    selectedAvailability.forEach((value) => params.append("availability", value));
+    if (selectedPrice && selectedPrice !== "all") params.set("price", selectedPrice);
+
+    const query = params.toString();
+    const nextUrl = query ? `${window.location.pathname}?${query}` : window.location.pathname;
+    window.history.replaceState({}, "", nextUrl);
+  };
+
+  const applyFilters = (updateUrl = false) => {
+    const selectedCategories = Array.from(form.querySelectorAll("input[name='category']:checked")).map((el) => el.value);
+    const selectedAvailability = Array.from(form.querySelectorAll("input[name='availability']:checked")).map((el) => el.value);
+    const selectedPrice = form.querySelector("input[name='price']:checked")?.value || "all";
+
+    let visibleCount = 0;
+    cards.forEach((card) => {
+      const category = card.dataset.category || "";
+      const availability = card.dataset.availability || "";
+      const price = Number(card.dataset.price || "0");
+
+      const categoryPass = selectedCategories.length === 0 || selectedCategories.includes(category);
+      const availabilityPass = selectedAvailability.length === 0 || selectedAvailability.includes(availability);
+      let pricePass = true;
+      if (selectedPrice !== "all") {
+        const [min, max] = selectedPrice.split("-").map(Number);
+        pricePass = price >= min && price <= max;
+      }
+
+      const isVisible = categoryPass && availabilityPass && pricePass;
+      card.style.display = isVisible ? "" : "none";
+      if (isVisible) visibleCount += 1;
+    });
+
+    results.textContent = `Showing ${visibleCount} product${visibleCount === 1 ? "" : "s"}`;
+    emptyState.style.display = visibleCount === 0 ? "block" : "none";
+    if (updateUrl) syncUrl(selectedCategories, selectedAvailability, selectedPrice);
+  };
+
+  const hydrateFromUrl = () => {
+    const params = new URLSearchParams(window.location.search);
+    const categories = params.getAll("category");
+    const availability = params.getAll("availability");
+    const price = params.get("price");
+
+    categories.forEach((value) => {
+      const checkbox = form.querySelector(`input[name="category"][value="${value}"]`);
+      if (checkbox) checkbox.checked = true;
+    });
+
+    availability.forEach((value) => {
+      const checkbox = form.querySelector(`input[name="availability"][value="${value}"]`);
+      if (checkbox) checkbox.checked = true;
+    });
+
+    if (price) {
+      const radio = form.querySelector(`input[name="price"][value="${price}"]`);
+      if (radio) radio.checked = true;
+    }
+  };
+
+  form.addEventListener("change", () => applyFilters(true));
+  if (resetButton) {
+    resetButton.addEventListener("click", () => {
+      form.reset();
+      applyFilters(true);
+    });
+  }
+
+  hydrateFromUrl();
+  applyFilters(false);
+}
+
 mountShared();
 wireModal();
+initProductFilters();
