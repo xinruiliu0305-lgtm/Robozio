@@ -10,27 +10,55 @@
     <div class="app">
       <div data-shared="header"></div>
       <main class="container section">
-        <h1 class="title">Support & Service Platform</h1>
-        <p class="sub">Maintenance request, repair booking, spare parts inquiry, technical support, and warranty claims.</p>
-        <div class="grid g-3">
-          <article class="card pad"><h3>Maintenance Request</h3><p class="meta">Plan preventive maintenance for your robot fleet.</p></article>
-          <article class="card pad"><h3>Repair Booking</h3><p class="meta">Schedule corrective repair with local engineers.</p></article>
-          <article class="card pad"><h3>Spare Parts Inquiry</h3><p class="meta">Request specific components and sourcing support.</p></article>
-          <article class="card pad"><h3>Technical Support</h3><p class="meta">Get integration and troubleshooting assistance.</p></article>
-          <article class="card pad"><h3>Warranty Claim</h3><p class="meta">Submit warranty service requests quickly.</p></article>
-        </div>
+        <h1 class="title">Support Center</h1>
+        <p class="sub">Choose the support path that matches your need, then submit a ticket. You will receive a confirmation email copy for every inquiry.</p>
+        <section class="support-layout">
+          <article class="card pad">
+            <h2>Sales Support</h2>
+            <p class="meta">For order status, shipping, pricing, quotations, and account assistance.</p>
+            <ul class="support-list">
+              <li>Order, payment, and shipping follow-up</li>
+              <li>Stock and availability verification</li>
+              <li>Returns, exchange, and warranty requests</li>
+              <li>Special orders and enterprise quotes</li>
+              <li>Account and billing assistance</li>
+            </ul>
+            <p class="meta">Support hours: Monday to Friday, 9:00 AM - 6:00 PM GST</p>
+          </article>
+          <article class="card pad">
+            <h2>Technical Support</h2>
+            <p class="meta">For deployment guidance, integration help, and troubleshooting.</p>
+            <ul class="support-list">
+              <li>Robot setup and commissioning questions</li>
+              <li>Integration with your site and workflows</li>
+              <li>Sensor, navigation, and software issues</li>
+              <li>Maintenance planning and lifecycle support</li>
+              <li>Knowledge base and best-practice references</li>
+            </ul>
+            <p class="meta">For urgent deployment issues, include system logs and serial number in your ticket.</p>
+          </article>
+        </section>
         <section class="section">
           <article class="card pad">
-            <h2 class="title">Open Service Request</h2>
-            <form class="form-grid">
-              <div><label>Name</label><input /></div>
-              <div><label>Company</label><input /></div>
-              <div><label>Email</label><input type="email" /></div>
-              <div><label>Country</label><select><option>UAE</option><option>Saudi Arabia</option><option>Qatar</option><option>Kuwait</option><option>Oman</option><option>Bahrain</option></select></div>
-              <div><label>Request Type</label><select><option>Maintenance request</option><option>Repair booking</option><option>Spare parts inquiry</option><option>Technical support</option><option>Warranty claim</option></select></div>
+            <h2 class="title">Contact Support</h2>
+            <p class="meta">To receive inquiries in real inbox, replace `your_form_id` in form action and set your real site URL in `_next`.</p>
+            <form class="form-grid" method="POST" action="https://formspree.io/f/your_form_id">
+              <input type="hidden" name="_subject" value="New RoboZio Support Inquiry" />
+              <input type="hidden" name="_next" value="https://your-domain.com/thank-you.html" />
+              <div><label>Full Name</label><input name="name" required /></div>
+              <div><label>Company</label><input name="company" /></div>
+              <div><label>Email</label><input type="email" name="email" required /></div>
+              <div><label>Phone</label><input name="phone" /></div>
+              <div><label>Country</label><select name="country"><option>UAE</option><option>Saudi Arabia</option><option>Qatar</option><option>Kuwait</option><option>Oman</option><option>Bahrain</option></select></div>
+              <div><label>Support Type</label><select name="request_type"><option>Sales support</option><option>Technical support</option><option>Maintenance request</option><option>Repair booking</option><option>Spare parts inquiry</option><option>Warranty claim</option></select></div>
+              <div><label>Order Number (optional)</label><input name="order_number" /></div>
+              <div><label>Robot Model / SKU</label><input name="robot_model" /></div>
+              <div style="grid-column: 1 / -1;">
+                <label>Issue Details</label>
+                <textarea name="details" required></textarea>
+              </div>
+              <div class="btn-row" style="margin-top:10px;"><button class="btn btn-primary" type="submit">Submit Ticket</button></div>
             </form>
-            <label style="margin-top:10px;">Details</label><textarea></textarea>
-            <div class="btn-row" style="margin-top:10px;"><button class="btn btn-primary" type="button">Submit Ticket</button></div>
           </article>
         </section>
       </main>
