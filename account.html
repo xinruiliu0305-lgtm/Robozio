@@ -9,34 +9,84 @@
   <body>
     <div class="app">
       <div data-shared="header"></div>
-      <main class="container section">
-        <h1 class="title">Account Dashboard</h1>
-        <section class="dash">
-          <aside class="card panel side">
-            <a class="active" href="#">Orders</a>
-            <a href="#">Quotes</a>
-            <a href="#">Rental Requests</a>
-            <a href="#">Service Tickets</a>
-            <a href="#">Saved Products</a>
-            <a href="#">Company Profile</a>
-          </aside>
-          <section>
-            <div class="stats">
-              <article class="card pad"><h3>16</h3><p class="meta">Orders</p></article>
-              <article class="card pad"><h3>5</h3><p class="meta">Quotes</p></article>
-              <article class="card pad"><h3>3</h3><p class="meta">Rental Requests</p></article>
+      <main class="container section" data-page="account-auth">
+        <h1 class="title">Account Login</h1>
+        <section class="card pad" id="login-panel">
+          <form id="login-form" class="form-grid">
+            <div><label>Username (Email)</label><input name="email" type="email" required /></div>
+            <div><label>Password</label><input name="password" type="password" required /></div>
+            <div class="btn-row" style="grid-column: 1 / -1;">
+              <button class="btn btn-primary" type="submit">Sign In</button>
             </div>
-            <article class="card panel" style="margin-top:10px;">
-              <h3>Recent Activity</h3>
-              <p class="meta">Order #RZ-2049 shipped to Abu Dhabi.</p>
-              <p class="meta">Quote #Q-883 requested for security robot fleet.</p>
-              <p class="meta">Service ticket #S-112 accepted for on-site repair.</p>
-            </article>
-          </section>
+          </form>
+          <p class="meta login-register-hint">If you do not have an account, <a class="register-now-link" href="register.html">register now</a>.</p>
+        </section>
+
+        <section class="card pad" id="merchant-dashboard" style="display:none; margin-top: 14px;">
+          <h2>Merchant Management</h2>
+          <p class="meta" id="account-status">Not logged in.</p>
+          <div id="account-summary" class="stats">
+            <article class="card pad"><h3>-</h3><p class="meta">User ID</p></article>
+            <article class="card pad"><h3>-</h3><p class="meta">Merchant Status</p></article>
+            <article class="card pad"><h3>-</h3><p class="meta">Listings</p></article>
+          </div>
+          <article class="card pad" style="margin-top: 10px;">
+            <h3>Company Information (Read-only)</h3>
+            <div id="company-readonly" class="meta">No company profile yet.</div>
+            <p class="meta">If you need to modify company information, please use <a href="support.html">Support</a>.</p>
+          </article>
+          <article class="card pad" style="margin-top: 10px;">
+            <h3>Product / Solution Management</h3>
+            <p class="meta">Add or remove your listings. Company profile must be submitted first in Merchant Portal.</p>
+            <form id="account-listing-form" class="form-grid">
+              <div>
+                <label>Type</label>
+                <select name="listingType">
+                  <option>Product</option>
+                  <option>Solution</option>
+                </select>
+              </div>
+              <div><label>Title</label><input name="title" required /></div>
+              <div><label>Category</label><input name="category" required /></div>
+              <div style="grid-column: 1 / -1;"><label>Summary</label><textarea name="summary" required></textarea></div>
+              <div class="btn-row" style="grid-column: 1 / -1;"><button class="btn btn-primary" type="submit">Add Listing</button></div>
+            </form>
+            <div id="account-listings" class="merchant-listings"></div>
+          </article>
+          <div class="btn-row" style="margin-top: 12px;">
+            <a class="btn btn-alt" href="merchant-portal.html">Open Merchant Portal</a>
+            <a class="btn btn-alt" href="admin.html">Open Admin Console</a>
+            <button class="btn btn-primary" type="button" id="logout-btn">Logout</button>
+          </div>
+        </section>
+
+        <section class="card pad" id="buyer-dashboard" style="display:none; margin-top: 14px;">
+          <h2>Buyer Order Management</h2>
+          <p class="meta" id="buyer-status">Logged in as buyer.</p>
+          <div class="stats">
+            <article class="card pad"><h3>0</h3><p class="meta">Orders</p></article>
+            <article class="card pad"><h3>0</h3><p class="meta">Open Quotes</p></article>
+            <article class="card pad"><h3>0</h3><p class="meta">Cart Items</p></article>
+          </div>
+          <article class="card pad" style="margin-top: 10px;">
+            <h3>Quick Access</h3>
+            <div class="btn-row">
+              <a class="btn btn-primary" href="cart.html">Open Cart</a>
+              <a class="btn btn-alt" href="products.html">Browse Products</a>
+            </div>
+          </article>
+          <article class="card pad" style="margin-top: 10px;">
+            <h3>Recent Orders</h3>
+            <div id="buyer-orders" class="merchant-listings"></div>
+          </article>
+          <div class="btn-row" style="margin-top: 12px;">
+            <button class="btn btn-primary" type="button" id="buyer-logout-btn">Logout</button>
+          </div>
         </section>
       </main>
       <div data-shared="footer"></div>
     </div>
     <script src="app.js"></script>
+    <script src="account.js"></script>
   </body>
 </html>

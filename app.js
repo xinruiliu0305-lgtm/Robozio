@@ -1,5 +1,9 @@
 const navData = [
   {
+    label: "Home",
+    href: "index.html"
+  },
+  {
     label: "Robots",
     href: "products.html",
     children: [
@@ -18,52 +22,70 @@ const navData = [
   },
   {
     label: "Solutions",
-    href: "category.html?group=solutions",
+    href: "solutions.html",
     children: [
-      "Robot Rental",
-      "Education Solutions",
-      "Service Robot Solutions",
-      "Industrial Solutions",
-      "After-sales & Repair",
-      "Robot Training",
-      "Data Collection",
-      "Hospitality Solutions",
-      "Security & Patrol Solutions",
-      "Logistics & Warehouse Automation",
-      "Government & Smart City Solutions",
-      "Event & Exhibition Robots",
-      "Custom Integration"
+      { label: "Robot Rental", href: "solution-rental.html" },
+      { label: "Education Solutions", href: "solution-education.html" },
+      { label: "Industrial Solutions", href: "solution-industrial.html" },
+      { label: "After-sales & Repair", href: "solution-after-sales-repair.html" },
+      { label: "Robot Training", href: "solution-training.html" },
+      { label: "Data Collection", href: "solution-data-collection.html" },
+      { label: "Integration Services", href: "solution-integration.html" }
     ]
   },
   {
     label: "Join as Merchant",
-    href: "merchant.html",
+    href: "merchant-portal.html",
     children: ["Merchant Benefits", "Listing Fees", "Featured Placement", "Apply Now"]
   },
   {
     label: "Support",
-    href: "support.html",
-    children: ["Technical Support", "After-sales Service", "Repair Request", "Warranty Help"]
-  },
-  {
-    label: "About Us",
-    href: "about.html",
-    children: ["About RobotZio", "Mission", "Vision", "What We Do"]
+    href: "support.html"
   },
   {
     label: "Partnership",
-    href: "partnership.html",
-    children: ["System Integrator", "Technology Alliance", "Regional Partner", "Government Program"]
+    href: "partnership.html"
+  },
+  {
+    label: "About Us",
+    href: "about.html"
   }
 ];
 
 function buildHeader() {
+  const currentPath = window.location.pathname.split("/").pop() || "index.html";
+  const isActiveNav = (href) => {
+    if (!href) return false;
+    const normalizedHref = href.split("?")[0];
+    if (normalizedHref === "solutions.html" && currentPath.startsWith("solution-")) {
+      return true;
+    }
+    if (normalizedHref === "index.html") {
+      return currentPath === "" || currentPath === "index.html";
+    }
+    return currentPath === normalizedHref;
+  };
+
   const items = navData.map((item) => {
-    const splitIndex = Math.ceil(item.children.length / 2);
-    const leftCol = item.children.slice(0, splitIndex).map((child) => `<li><a href="products.html">${child}</a></li>`).join("");
-    const rightCol = item.children.slice(splitIndex).map((child) => `<li><a href="products.html">${child}</a></li>`).join("");
+    const activeClass = isActiveNav(item.href) ? " active" : "";
+    if (!item.children || item.children.length === 0) {
+      return `
+      <li class="nav-item${activeClass}">
+        <a href="${item.href}">${item.label}</a>
+      </li>
+    `;
+    }
+    const childItems = item.children.map((child) => {
+      if (typeof child === "string") {
+        return { label: child, href: "products.html" };
+      }
+      return child;
+    });
+    const splitIndex = Math.ceil(childItems.length / 2);
+    const leftCol = childItems.slice(0, splitIndex).map((child) => `<li><a href="${child.href}">${child.label}</a></li>`).join("");
+    const rightCol = childItems.slice(splitIndex).map((child) => `<li><a href="${child.href}">${child.label}</a></li>`).join("");
     return `
-      <li class="nav-item">
+      <li class="nav-item${activeClass}">
         <a href="${item.href}">${item.label}</a>
         <div class="dropdown mega-menu">
           <h4>${item.label}</h4>
@@ -87,9 +109,10 @@ function buildHeader() {
         </form>
         <div class="head-actions">
           <a class="icon-chip" href="search.html" aria-label="Search">Search</a>
+          <a class="icon-chip" href="cart.html" aria-label="Cart">Cart</a>
           <a class="icon-chip" href="account.html" aria-label="Account">Account</a>
           <select class="select-chip" aria-label="Language selector"><option>EN</option><option>AR</option></select>
-          <a class="btn btn-primary list-btn" href="merchant.html">List Your Products</a>
+          <a class="btn btn-primary list-btn" href="merchant-portal.html">List Your Products</a>
         </div>
       </div>
       <div class="mobile-nav-drawer" data-mobile-nav-drawer>
@@ -178,17 +201,61 @@ function initProductFilters() {
   const cards = Array.from(document.querySelectorAll(".product-item"));
   const results = document.getElementById("results-count");
   const emptyState = document.getElementById("empty-products-message");
+  const minPriceInput = document.getElementById("min-price");
+  const maxPriceInput = document.getElementById("max-price");
+  const minPriceValue = document.getElementById("min-price-value");
+  const maxPriceValue = document.getElementById("max-price-value");
+  const selectedPriceRange = document.getElementById("selected-price-range");
   if (!form || cards.length === 0 || !results || !emptyState) return;
 
-  const syncUrl = (selectedCategories, selectedAvailability, selectedSupplierType) => {
+  const formatAed = (value) => `AED ${Math.round(value).toLocaleString()}`;
+  const parsePrice = (text) => {
+    if (!text) return null;
+    const match = text.replace(/,/g, "").match(/(\d+(?:\.\d+)?)/);
+    return match ? Number(match[1]) : null;
+  };
+
+  const detectedPrices = cards
+    .map((card) => parsePrice(card.querySelector(".price")?.textContent || ""))
+    .filter((value) => Number.isFinite(value));
+  const detectedMin = detectedPrices.length ? Math.floor(Math.min(...detectedPrices)) : 0;
+  const detectedMax = detectedPrices.length ? Math.ceil(Math.max(...detectedPrices)) : 100000;
+
+  if (minPriceInput && maxPriceInput) {
+    minPriceInput.min = String(detectedMin);
+    minPriceInput.max = String(detectedMax);
+    maxPriceInput.min = String(detectedMin);
+    maxPriceInput.max = String(detectedMax);
+    minPriceInput.value = String(detectedMin);
+    maxPriceInput.value = String(detectedMax);
+  }
+
+  const renderPriceUi = () => {
+    if (!minPriceInput || !maxPriceInput) return;
+    const min = Number(minPriceInput.value);
+    const max = Number(maxPriceInput.value);
+    if (minPriceValue) minPriceValue.textContent = formatAed(min);
+    if (maxPriceValue) maxPriceValue.textContent = formatAed(max);
+    if (selectedPriceRange) selectedPriceRange.textContent = `${formatAed(min)} - ${formatAed(max)}`;
+  };
+
+  const syncUrl = (selectedCategories, selectedAvailability, selectedSupplierType, selectedBrands, selectedProductTypes, minPrice, maxPrice) => {
     const params = new URLSearchParams(window.location.search);
     params.delete("useCase");
     params.delete("availability");
     params.delete("supplierType");
+    params.delete("brand");
+    params.delete("productType");
+    params.delete("minPrice");
+    params.delete("maxPrice");
 
     selectedCategories.forEach((value) => params.append("useCase", value));
     selectedAvailability.forEach((value) => params.append("availability", value));
     selectedSupplierType.forEach((value) => params.append("supplierType", value));
+    selectedBrands.forEach((value) => params.append("brand", value));
+    selectedProductTypes.forEach((value) => params.append("productType", value));
+    if (minPrice > detectedMin) params.set("minPrice", String(minPrice));
+    if (maxPrice < detectedMax) params.set("maxPrice", String(maxPrice));
 
     const query = params.toString();
     const nextUrl = query ? `${window.location.pathname}?${query}` : window.location.pathname;
@@ -199,25 +266,37 @@ function initProductFilters() {
     const selectedCategories = Array.from(form.querySelectorAll("input[name='useCase']:checked")).map((el) => el.value);
     const selectedAvailability = Array.from(form.querySelectorAll("input[name='availability']:checked")).map((el) => el.value);
     const selectedSupplierType = Array.from(form.querySelectorAll("input[name='supplierType']:checked")).map((el) => el.value);
+    const selectedBrands = Array.from(form.querySelectorAll("input[name='brand']:checked")).map((el) => el.value);
+    const selectedProductTypes = Array.from(form.querySelectorAll("input[name='productType']:checked")).map((el) => el.value);
+    const minPrice = minPriceInput ? Number(minPriceInput.value) : detectedMin;
+    const maxPrice = maxPriceInput ? Number(maxPriceInput.value) : detectedMax;
+    const isPriceFilterActive = minPrice > detectedMin || maxPrice < detectedMax;
 
     let visibleCount = 0;
     cards.forEach((card) => {
       const category = card.dataset.category || "";
       const availability = card.dataset.availability || "";
       const supplierType = card.dataset.supplierType || "";
+      const brand = card.dataset.brand || "";
+      const productType = card.dataset.productType || "";
+      const cardPrice = parsePrice(card.querySelector(".price")?.textContent || "");
 
       const categoryPass = selectedCategories.length === 0 || selectedCategories.includes(category);
       const availabilityPass = selectedAvailability.length === 0 || selectedAvailability.includes(availability);
       const supplierTypePass = selectedSupplierType.length === 0 || selectedSupplierType.includes(supplierType);
+      const brandPass = selectedBrands.length === 0 || selectedBrands.includes(brand);
+      const productTypePass = selectedProductTypes.length === 0 || selectedProductTypes.includes(productType);
+      const pricePass = !isPriceFilterActive || (cardPrice !== null && cardPrice >= minPrice && cardPrice <= maxPrice);
 
-      const isVisible = categoryPass && availabilityPass && supplierTypePass;
+      const isVisible = categoryPass && availabilityPass && supplierTypePass && brandPass && productTypePass && pricePass;
       card.style.display = isVisible ? "" : "none";
       if (isVisible) visibleCount += 1;
     });
 
     results.textContent = `Showing ${visibleCount} product${visibleCount === 1 ? "" : "s"}`;
     emptyState.style.display = visibleCount === 0 ? "block" : "none";
-    if (updateUrl) syncUrl(selectedCategories, selectedAvailability, selectedSupplierType);
+    renderPriceUi();
+    if (updateUrl) syncUrl(selectedCategories, selectedAvailability, selectedSupplierType, selectedBrands, selectedProductTypes, minPrice, maxPrice);
   };
 
   const hydrateFromUrl = () => {
@@ -225,6 +304,10 @@ function initProductFilters() {
     const categories = params.getAll("useCase");
     const availability = params.getAll("availability");
     const supplierTypes = params.getAll("supplierType");
+    const brands = params.getAll("brand");
+    const productTypes = params.getAll("productType");
+    const minPriceParam = Number(params.get("minPrice"));
+    const maxPriceParam = Number(params.get("maxPrice"));
 
     categories.forEach((value) => {
       const checkbox = form.querySelector(`input[name="useCase"][value="${value}"]`);
@@ -240,12 +323,41 @@ function initProductFilters() {
       const checkbox = form.querySelector(`input[name="supplierType"][value="${value}"]`);
       if (checkbox) checkbox.checked = true;
     });
+    brands.forEach((value) => {
+      const checkbox = form.querySelector(`input[name="brand"][value="${value}"]`);
+      if (checkbox) checkbox.checked = true;
+    });
+    productTypes.forEach((value) => {
+      const checkbox = form.querySelector(`input[name="productType"][value="${value}"]`);
+      if (checkbox) checkbox.checked = true;
+    });
+
+    if (minPriceInput && Number.isFinite(minPriceParam)) {
+      minPriceInput.value = String(Math.max(detectedMin, Math.min(minPriceParam, detectedMax)));
+    }
+    if (maxPriceInput && Number.isFinite(maxPriceParam)) {
+      maxPriceInput.value = String(Math.max(detectedMin, Math.min(maxPriceParam, detectedMax)));
+    }
   };
 
   form.addEventListener("change", () => applyFilters(true));
+  const syncPriceInputs = (changed) => {
+    if (!minPriceInput || !maxPriceInput) return;
+    let min = Number(minPriceInput.value);
+    let max = Number(maxPriceInput.value);
+    if (changed === "min" && min > max) max = min;
+    if (changed === "max" && max < min) min = max;
+    minPriceInput.value = String(min);
+    maxPriceInput.value = String(max);
+    applyFilters(true);
+  };
+  if (minPriceInput) minPriceInput.addEventListener("input", () => syncPriceInputs("min"));
+  if (maxPriceInput) maxPriceInput.addEventListener("input", () => syncPriceInputs("max"));
   if (resetButton) {
     resetButton.addEventListener("click", () => {
       form.reset();
+      if (minPriceInput) minPriceInput.value = String(detectedMin);
+      if (maxPriceInput) maxPriceInput.value = String(detectedMax);
       applyFilters(true);
     });
   }

@@ -9,33 +9,35 @@
   <body>
     <div class="app">
       <div data-shared="header"></div>
-      <main class="container section">
+      <main class="container section" data-page="buyer-cart">
         <h1 class="title">Quote Basket</h1>
         <div class="steps"><span class="step active">Products Selected</span><span class="step active">Company Details</span><span class="step">Quote Review</span><span class="step">Submit Request</span></div>
         <section class="cart-grid" style="margin-top:14px;">
           <article class="card panel">
             <h3>Selected Products</h3>
-            <div class="line-item"><div class="mini-thumb placeholder-media">Image</div><div><strong>Atlas Concierge Robot</strong><p class="meta">Requested Qty: 2 | Supplier: Apex Robotics</p></div><div class="price">Request Quote</div></div>
-            <div class="line-item"><div class="mini-thumb placeholder-media">Image</div><div><strong>Cargo AMR C7</strong><p class="meta">Requested Qty: 4 | Supplier: Nova Mobility</p></div><div class="price">Request Quote</div></div>
-            <div class="line-item"><div class="mini-thumb placeholder-media">Image</div><div><strong>Guardian Patrol K9</strong><p class="meta">Requested Qty: 1 | Supplier: SecureBot Distribution</p></div><div class="price">Request Quote</div></div>
-            <div class="btn-row" style="margin-top:10px;"><a class="btn btn-alt" href="products.html">Continue Exploring</a></div>
+            <div id="buyer-cart-items"></div>
+            <div class="btn-row" style="margin-top:10px;">
+              <a class="btn btn-alt" href="products.html">Continue Exploring</a>
+              <button class="btn btn-alt" type="button" id="clear-cart-btn">Clear Cart</button>
+            </div>
           </article>
           <aside class="card panel">
             <h3>Buyer Details</h3>
-            <div class="form-grid">
-              <div><label>Full Name</label><input /></div>
-              <div><label>Company</label><input /></div>
-              <div><label>Email</label><input type="email" /></div>
-              <div><label>Phone</label><input /></div>
-              <div><label>Country</label><select><option>UAE</option><option>Saudi Arabia</option><option>Qatar</option><option>Kuwait</option><option>Oman</option><option>Bahrain</option></select></div>
-              <div><label>City</label><input /></div>
+            <div class="form-grid" id="buyer-cart-profile">
+              <div><label>Full Name</label><input id="buyer-name" /></div>
+              <div><label>Company</label><input id="buyer-company" /></div>
+              <div><label>Email</label><input id="buyer-email" type="email" /></div>
+              <div><label>Phone</label><input id="buyer-phone" /></div>
+              <div><label>Country</label><select id="buyer-country"><option>UAE</option><option>Saudi Arabia</option><option>Qatar</option><option>Kuwait</option><option>Oman</option><option>Bahrain</option></select></div>
+              <div><label>City</label><input id="buyer-city" /></div>
             </div>
-            <label style="margin-top:10px;">Project Details</label><textarea placeholder="Use case, timeline, target delivery city, and support requirements"></textarea>
+            <label style="margin-top:10px;">Project Details</label><textarea id="buyer-project-details" placeholder="Use case, timeline, target delivery city, and support requirements"></textarea>
             <h3>Request Summary</h3>
-            <p class="meta">Selected products: 3</p>
-            <p class="meta">Target deployment: Q3 2026</p>
-            <p class="meta">Preferred model: Purchase + Service support</p>
+            <p class="meta" id="cart-selected-products">Selected products: 0</p>
+            <p class="meta">Target deployment: configurable in next step</p>
+            <p class="meta">Preferred model: choose in checkout</p>
             <p class="price">Status: Awaiting submission</p>
+            <p class="meta" id="buyer-cart-status">Login required for cart management.</p>
             <div class="btn-row"><a class="btn btn-primary" href="checkout.html">Continue to Quote Review</a><button class="btn btn-alt">Contact RobotZio Advisor</button></div>
           </aside>
         </section>
@@ -43,5 +45,6 @@
       <div data-shared="footer"></div>
     </div>
     <script src="app.js"></script>
+    <script src="cart.js"></script>
   </body>
 </html>

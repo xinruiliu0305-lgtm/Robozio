@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RobotZio | Merchant Self-Service Portal</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app">
+      <div data-shared="header"></div>
+      <main class="container section" data-page="merchant-portal">
+        <h1 class="title">Merchant Self-Service Portal</h1>
+        <p class="sub">Complete company profile first, then publish products or solutions.</p>
+        <section class="card pad" id="merchant-auth-gate">
+          <h2>Login Required</h2>
+          <p class="meta">You need to login first. If you do not have an account, register now.</p>
+          <div class="btn-row">
+            <a class="btn btn-primary" href="account.html">Go to Login</a>
+            <a class="btn btn-alt" href="register.html">Register Now</a>
+          </div>
+        </section>
+
+        <div id="merchant-portal-app" style="display:none;">
+        <section class="grid g-2 merchant-portal-grid">
+          <article class="card pad">
+            <h2>1) Merchant Profile</h2>
+            <form id="merchant-profile-form" class="form-grid">
+              <div><label>Company Name</label><input name="companyName" required /></div>
+              <div><label>Contact Name</label><input name="contactName" required /></div>
+              <div><label>Email</label><input name="email" type="email" required /></div>
+              <div><label>Phone</label><input name="phone" required /></div>
+              <div><label>Country</label><input name="country" required /></div>
+              <div>
+                <label>Company Type</label>
+                <select name="companyType">
+                  <option value="manufacturer">Manufacturer</option>
+                  <option value="distributor">Distributor</option>
+                  <option value="service-provider">Service Provider</option>
+                  <option value="integrator">System Integrator</option>
+                </select>
+              </div>
+              <p class="meta" style="grid-column: 1 / -1;">Profile must be submitted before adding listings.</p>
+              <div class="btn-row" style="grid-column: 1 / -1;">
+                <button class="btn btn-primary" type="submit">Submit Company Profile</button>
+              </div>
+            </form>
+          </article>
+
+          <article class="card pad">
+            <h2>2) Add Products / Solutions</h2>
+            <div class="merchant-listing-filters">
+              <div>
+                <label>Filter by Type</label>
+                <select id="listing-filter-type">
+                  <option value="">All</option>
+                  <option value="Product">Product</option>
+                  <option value="Solution">Solution</option>
+                </select>
+              </div>
+              <div>
+                <label>Filter by Category</label>
+                <select id="listing-filter-category">
+                  <option value="">All categories</option>
+                </select>
+              </div>
+              <div>
+                <label>Search Title</label>
+                <input id="listing-filter-keyword" placeholder="Search listing title..." />
+              </div>
+            </div>
+            <form id="merchant-listing-form" class="form-grid">
+              <div>
+                <label>Listing Type</label>
+                <select name="listingType">
+                  <option>Product</option>
+                  <option>Solution</option>
+                </select>
+              </div>
+              <div><label>Title</label><input name="title" required /></div>
+              <div>
+                <label>Category</label>
+                <select name="category" required>
+                  <option value="">Select category</option>
+                  <optgroup label="Robots">
+                    <option>Featured Products</option>
+                    <option>Robot Parts</option>
+                    <option>Robotics Kits</option>
+                    <option>Service Robots</option>
+                    <option>Industrial Robots</option>
+                    <option>Humanoid Robots</option>
+                    <option>Robot Dogs</option>
+                    <option>Delivery Robots</option>
+                    <option>Cleaning Robots</option>
+                    <option>Security Robots</option>
+                    <option>Educational Robots</option>
+                  </optgroup>
+                  <optgroup label="Solutions">
+                    <option>Robot Rental</option>
+                    <option>Education Solutions</option>
+                    <option>Industrial Solutions</option>
+                    <option>After-sales & Repair</option>
+                    <option>Robot Training</option>
+                    <option>Data Collection</option>
+                    <option>Integration Services</option>
+                  </optgroup>
+                </select>
+              </div>
+              <div style="grid-column: 1 / -1;">
+                <label>Product Images (max 5)</label>
+                <input name="images" type="file" accept="image/*" multiple />
+                <p class="meta">Upload up to 5 images per listing.</p>
+                <div id="listing-image-preview" class="listing-image-preview"></div>
+              </div>
+              <div style="grid-column: 1 / -1;"><label>Summary</label><textarea name="summary" placeholder="Core capability, target scenario, and delivery model." required></textarea></div>
+              <div class="btn-row" style="grid-column: 1 / -1;">
+                <button class="btn btn-primary" type="submit">Add Listing</button>
+              </div>
+            </form>
+            <div id="merchant-listings" class="merchant-listings"></div>
+          </article>
+        </section>
+        <p class="meta" id="merchant-status-message">Ready.</p>
+        </div>
+      </main>
+      <div data-shared="footer"></div>
+    </div>
+    <script src="app.js"></script>
+    <script src="merchant-portal.js"></script>
+  </body>
+</html>

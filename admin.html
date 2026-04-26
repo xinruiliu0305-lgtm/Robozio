@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RobotZio | Admin Console</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app">
+      <div data-shared="header"></div>
+      <main class="container section" data-page="admin-console">
+        <h1 class="title">Admin Console</h1>
+        <p class="sub">Manage users, merchant onboarding, listings, and payment records.</p>
+        <p class="meta" id="admin-status">Checking access...</p>
+
+        <section class="stats" id="admin-stats">
+          <article class="card pad"><h3>-</h3><p class="meta">Users</p></article>
+          <article class="card pad"><h3>-</h3><p class="meta">Merchants</p></article>
+          <article class="card pad"><h3>-</h3><p class="meta">Listings</p></article>
+          <article class="card pad"><h3>-</h3><p class="meta">Payments</p></article>
+          <article class="card pad"><h3>-</h3><p class="meta">Buyer Orders</p></article>
+        </section>
+
+        <section class="grid g-2" style="margin-top: 12px;">
+          <article class="card pad">
+            <h2>Merchants</h2>
+            <div id="admin-merchants" class="admin-list"></div>
+          </article>
+          <article class="card pad">
+            <h2>Portal Users</h2>
+            <div id="admin-users" class="admin-list"></div>
+          </article>
+        </section>
+
+        <section class="grid g-2" style="margin-top: 12px;">
+          <article class="card pad">
+            <h2>Recent Listings</h2>
+            <div id="admin-listings" class="admin-list"></div>
+          </article>
+          <article class="card pad">
+            <h2>Recent Payments</h2>
+            <div id="admin-payments" class="admin-list"></div>
+          </article>
+        </section>
+
+        <section class="card pad" style="margin-top: 12px;">
+          <h2>Media Library</h2>
+          <p class="meta">Manage uploaded product/solution images from merchants.</p>
+          <div id="admin-media" class="admin-media-grid"></div>
+        </section>
+
+        <section class="card pad" style="margin-top: 12px;">
+          <h2>Buyer Orders</h2>
+          <p class="meta">Status flow: submitted -> processing -> quoted -> closed</p>
+          <div id="admin-buyer-orders" class="admin-list"></div>
+        </section>
+      </main>
+      <div data-shared="footer"></div>
+    </div>
+    <script src="app.js"></script>
+    <script src="admin.js"></script>
+  </body>
+</html>

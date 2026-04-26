@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RobotZio | Register</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app">
+      <div data-shared="header"></div>
+      <main class="container section" data-page="register-auth">
+        <h1 class="title">Create Account</h1>
+        <section class="card pad">
+          <form id="register-form" class="form-grid">
+            <div><label>Full Name</label><input name="fullName" required /></div>
+            <div><label>Email</label><input name="email" type="email" required /></div>
+            <div><label>Password</label><input name="password" type="password" minlength="8" required /></div>
+            <div>
+              <label>Account Type</label>
+              <select name="accountType" required>
+                <option value="buyer">Buyer</option>
+                <option value="seller">Seller</option>
+              </select>
+            </div>
+            <div class="btn-row" style="grid-column: 1 / -1;">
+              <button class="btn btn-primary" type="submit">Register</button>
+            </div>
+          </form>
+          <p class="meta" id="register-status">Ready.</p>
+          <p class="meta">Already have an account? <a href="account.html">Go to login</a>.</p>
+        </section>
+      </main>
+      <div data-shared="footer"></div>
+    </div>
+    <script src="app.js"></script>
+    <script src="register.js"></script>
+  </body>
+</html>

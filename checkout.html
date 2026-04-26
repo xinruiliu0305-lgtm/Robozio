@@ -9,33 +9,35 @@
   <body>
     <div class="app">
       <div data-shared="header"></div>
-      <main class="container section">
+      <main class="container section" data-page="buyer-checkout">
         <h1 class="title">Submit Quote Request</h1>
         <section class="cart-grid">
           <article class="card panel">
             <h3>Procurement Preference</h3>
-            <p class="meta"><input type="radio" name="pay" checked /> Request Purchase Quotation</p>
-            <p class="meta"><input type="radio" name="pay" /> Request Rental Proposal</p>
-            <p class="meta"><input type="radio" name="pay" /> Request Integrated Solution Proposal</p>
+            <p class="meta"><input type="radio" name="pay" value="purchase" checked /> Request Purchase Quotation</p>
+            <p class="meta"><input type="radio" name="pay" value="rental" /> Request Rental Proposal</p>
+            <p class="meta"><input type="radio" name="pay" value="integration" /> Request Integrated Solution Proposal</p>
             <div class="form-grid">
-              <div><label>Company Procurement Contact</label><input /></div>
-              <div><label>Target Budget Range</label><input /></div>
-              <div><label>Requested Delivery Timeline</label><input /></div>
-              <div><label>Preferred Contact Time</label><input /></div>
+              <div><label>Company Procurement Contact</label><input id="checkout-contact" /></div>
+              <div><label>Target Budget Range</label><input id="checkout-budget" /></div>
+              <div><label>Requested Delivery Timeline</label><input id="checkout-timeline" /></div>
+              <div><label>Preferred Contact Time</label><input id="checkout-contact-time" /></div>
             </div>
           </article>
           <aside class="card panel">
             <h3>Final Request Summary</h3>
-            <p class="meta">Requested products: 3</p>
-            <p class="meta">Suppliers involved: 3 merchants</p>
-            <p class="meta">Deployment region: UAE + Saudi Arabia</p>
+            <p class="meta" id="checkout-products">Requested products: 0</p>
+            <p class="meta" id="checkout-suppliers">Suppliers involved: 0 merchants</p>
+            <p class="meta">Deployment region: based on your request form</p>
             <p class="price">Submission mode: B2B quotation request</p>
-            <div class="btn-row"><a class="btn btn-primary" href="thank-you.html">Submit Request</a><a class="btn btn-alt" href="cart.html">Back</a></div>
+            <p class="meta" id="checkout-status">Ready to submit.</p>
+            <div class="btn-row"><button class="btn btn-primary" id="submit-order-btn" type="button">Submit Request</button><a class="btn btn-alt" href="cart.html">Back</a></div>
           </aside>
         </section>
       </main>
       <div data-shared="footer"></div>
     </div>
     <script src="app.js"></script>
+    <script src="checkout.js"></script>
   </body>
 </html>

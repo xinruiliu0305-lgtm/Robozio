@@ -30,6 +30,7 @@
             <p class="sub">Premium autonomous concierge platform designed for hospitality, retail, healthcare, and event venues.</p>
             <div class="btn-row">
               <button class="btn btn-primary">Request Quote</button>
+              <button class="btn btn-alt" type="button" id="add-to-cart-btn">Add to Cart</button>
               <button class="btn btn-alt">Contact Supplier</button>
               <button class="btn btn-alt">Request Rental</button>
               <button class="btn btn-alt">Save Product</button>
@@ -99,5 +100,38 @@
       <div data-shared="footer"></div>
     </div>
     <script src="app.js"></script>
+    <script>
+      (function () {
+        const token = localStorage.getItem("robotzio_auth_token") || "";
+        const button = document.getElementById("add-to-cart-btn");
+        if (!button) return;
+        button.addEventListener("click", async function () {
+          if (!token) {
+            alert("Please login as buyer first.");
+            window.location.href = "account.html";
+            return;
+          }
+          const response = await fetch("/api/buyer/cart", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: "Bearer " + token
+            },
+            body: JSON.stringify({
+              productName: "Atlas Concierge Robot",
+              supplier: "Apex Robotics Middle East",
+              qty: 1,
+              unitPriceText: "Request Quote",
+              productUrl: "product.html"
+            })
+          });
+          if (!response.ok) {
+            alert("Add to cart failed. Buyer account required.");
+            return;
+          }
+          alert("Added to cart.");
+        });
+      }());
+    </script>
   </body>
 </html>

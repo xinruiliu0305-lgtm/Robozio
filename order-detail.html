@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RobotZio | Order Detail</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app">
+      <div data-shared="header"></div>
+      <main class="container section" data-page="buyer-order-detail">
+        <h1 class="title">Order Detail</h1>
+        <p class="meta" id="order-detail-status">Loading order...</p>
+        <section class="grid g-2">
+          <article class="card pad">
+            <h2>Order Summary</h2>
+            <div id="order-summary"></div>
+            <div class="btn-row" style="margin-top: 10px;">
+              <button class="btn btn-alt" id="order-cancel-btn" type="button">Cancel Order</button>
+              <a class="btn btn-primary" href="account.html">Back to Account</a>
+            </div>
+          </article>
+          <article class="card pad">
+            <h2>Order Items</h2>
+            <div id="order-items"></div>
+          </article>
+        </section>
+      </main>
+      <div data-shared="footer"></div>
+    </div>
+    <script src="app.js"></script>
+    <script src="order-detail.js"></script>
+  </body>
+</html>

@@ -5,6 +5,12 @@
   "type": "module",
   "scripts": {
     "build:kb": "node scripts/build-kb.mjs",
-    "dev": "vercel dev"
+    "dev": "vercel dev",
+    "db:init": "node scripts/init-merchant-db.mjs",
+    "admin:create": "node scripts/create-admin.mjs"
+  },
+  "dependencies": {
+    "pg": "^8.20.0",
+    "stripe": "^22.1.0"
   }
 }
