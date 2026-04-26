@@ -21,6 +21,7 @@ const initAccountAuth = () => {
   const merchantDashboard = document.getElementById("merchant-dashboard");
   const buyerDashboard = document.getElementById("buyer-dashboard");
   const loginForm = document.getElementById("login-form");
+  const loginStatusNode = document.getElementById("login-status");
   const accountListingForm = document.getElementById("account-listing-form");
   const accountListingsNode = document.getElementById("account-listings");
   const companyReadonlyNode = document.getElementById("company-readonly");
@@ -97,6 +98,7 @@ const initAccountAuth = () => {
     const token = getToken();
     if (!token) {
       if (statusNode) statusNode.textContent = "Not logged in.";
+      if (loginStatusNode) loginStatusNode.textContent = "Please sign in with your account.";
       if (loginPanel) loginPanel.style.display = "block";
       if (merchantDashboard) merchantDashboard.style.display = "none";
       if (buyerDashboard) buyerDashboard.style.display = "none";
@@ -109,6 +111,7 @@ const initAccountAuth = () => {
     if (!response.ok) {
       clearToken();
       if (statusNode) statusNode.textContent = "Session expired. Please login again.";
+      if (loginStatusNode) loginStatusNode.textContent = "Session expired. Please login again.";
       if (loginPanel) loginPanel.style.display = "block";
       if (merchantDashboard) merchantDashboard.style.display = "none";
       if (buyerDashboard) buyerDashboard.style.display = "none";
@@ -170,9 +173,12 @@ const initAccountAuth = () => {
       }
     }
     if (merchantId) {
-      const listingResponse = await fetch(`/api/merchant/listings?merchantId=${merchantId}`);
-      if (listingResponse.ok) {
-        const listingPayload = await listingResponse.json();
+      const token = getToken();
+      const secureListingResponse = await fetch(`/api/merchant/listings?merchantId=${merchantId}`, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
+      if (secureListingResponse.ok) {
+        const listingPayload = await secureListingResponse.json();
         renderListings(listingPayload.listings || []);
       } else {
         renderListings([]);
@@ -185,24 +191,43 @@ const initAccountAuth = () => {
   if (loginForm) {
     loginForm.addEventListener("submit", async (event) => {
       event.preventDefault();
-      const data = new FormData(loginForm);
-      const response = await fetch("/api/auth/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          email: String(data.get("email") || "").trim(),
-          password: String(data.get("password") || "")
-        })
-      });
-      if (!response.ok) {
-        if (statusNode) statusNode.textContent = await getErrorMessage(response, "Login failed");
-        return;
+      const submitButton = loginForm.querySelector("button[type='submit']");
+      if (submitButton) {
+        submitButton.disabled = true;
+        submitButton.textContent = "Signing In...";
       }
-      const payload = await response.json();
-      setToken(payload.token);
-      if (statusNode) statusNode.textContent = `Login successful. Welcome ${payload.user?.fullName || ""}.`;
-      loginForm.reset();
-      await loadMe();
+      if (loginStatusNode) loginStatusNode.textContent = "Signing in...";
+      try {
+        const data = new FormData(loginForm);
+        const response = await fetch("/api/auth/login", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            email: String(data.get("email") || "").trim(),
+            password: String(data.get("password") || "")
+          })
+        });
+        if (!response.ok) {
+          const message = await getErrorMessage(response, "Login failed");
+          if (loginStatusNode) loginStatusNode.textContent = message;
+          return;
+        }
+        const payload = await response.json();
+        setToken(payload.token);
+        if (statusNode) statusNode.textContent = `Login successful. Welcome ${payload.user?.fullName || ""}.`;
+        if (loginStatusNode) loginStatusNode.textContent = "Login successful.";
+        loginForm.reset();
+        await loadMe();
+      } catch (_error) {
+        if (loginStatusNode) {
+          loginStatusNode.textContent = "Login service unavailable. If you are on Netlify static hosting, backend /api may not be connected.";
+        }
+      } finally {
+        if (submitButton) {
+          submitButton.disabled = false;
+          submitButton.textContent = "Sign In";
+        }
+      }
     });
   }
 
@@ -253,7 +278,10 @@ const initAccountAuth = () => {
       const data = new FormData(accountListingForm);
       const response = await fetch("/api/merchant/listings", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${getToken()}`
+        },
         body: JSON.stringify({
           merchantId,
           listingType: String(data.get("listingType") || "Product"),
@@ -279,7 +307,10 @@ const initAccountAuth = () => {
       const listingId = Number(button.getAttribute("data-delete-listing"));
       const response = await fetch("/api/merchant/listings", {
         method: "DELETE",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${getToken()}`
+        },
         body: JSON.stringify({ merchantId, listingId })
       });
       if (!response.ok) {

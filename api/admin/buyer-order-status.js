@@ -2,6 +2,12 @@ import { query } from "../../lib/db.js";
 import { getSessionUser, getTokenFromRequest } from "../../lib/auth.js";
 
 const ALLOWED = new Set(["submitted", "processing", "quoted", "closed"]);
+const NEXT_ALLOWED = {
+  submitted: new Set(["processing", "closed"]),
+  processing: new Set(["quoted", "closed"]),
+  quoted: new Set(["closed"]),
+  closed: new Set([])
+};
 
 export default async function handler(req, res) {
   if (req.method !== "POST") {
@@ -22,6 +28,21 @@ export default async function handler(req, res) {
       return res.status(400).json({ error: "Invalid order status payload" });
     }
 
+    const currentResult = await query(
+      `SELECT id, status FROM buyer_orders WHERE id = $1 LIMIT 1`,
+      [orderId]
+    );
+    const current = currentResult.rows[0];
+    if (!current) return res.status(404).json({ error: "Order not found" });
+    if (current.status === status) {
+      return res.status(200).json({ order: current });
+    }
+    if (!NEXT_ALLOWED[current.status]?.has(status)) {
+      return res.status(400).json({
+        error: `Invalid transition from ${current.status} to ${status}`
+      });
+    }
+
     const result = await query(
       `UPDATE buyer_orders
        SET status = $1
@@ -29,7 +50,6 @@ export default async function handler(req, res) {
        RETURNING id, status`,
       [status, orderId]
     );
-    if (!result.rows[0]) return res.status(404).json({ error: "Order not found" });
     return res.status(200).json({ order: result.rows[0] });
   } catch (error) {
     return res.status(500).json({

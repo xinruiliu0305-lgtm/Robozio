@@ -1,16 +1,44 @@
 import { query } from "../../lib/db.js";
+import { getSessionUser, getTokenFromRequest } from "../../lib/auth.js";
 
 const parseMerchantId = (input) => {
   const id = Number(input);
   return Number.isInteger(id) && id > 0 ? id : null;
 };
 
+const resolveAuthorizedMerchantId = async (req, res, merchantIdRaw) => {
+  const token = getTokenFromRequest(req);
+  const user = await getSessionUser(token);
+  if (!user || (user.role !== "merchant" && user.role !== "admin")) {
+    res.status(403).json({ error: "Seller or admin access required" });
+    return null;
+  }
+
+  if (user.role === "admin") {
+    const merchantId = parseMerchantId(merchantIdRaw);
+    if (!merchantId) {
+      res.status(400).json({ error: "merchantId is required" });
+      return null;
+    }
+    return merchantId;
+  }
+
+  const merchantResult = await query(
+    `SELECT id FROM merchants WHERE email = $1 LIMIT 1`,
+    [String(user.email || "").toLowerCase()]
+  );
+  const merchantId = merchantResult.rows[0]?.id || null;
+  if (!merchantId) {
+    res.status(400).json({ error: "Merchant profile not found for current user" });
+    return null;
+  }
+  return merchantId;
+};
+
 export default async function handler(req, res) {
   if (req.method === "GET") {
-    const merchantId = parseMerchantId(req.query.merchantId);
-    if (!merchantId) {
-      return res.status(400).json({ error: "merchantId is required" });
-    }
+    const merchantId = await resolveAuthorizedMerchantId(req, res, req.query.merchantId);
+    if (!merchantId) return;
     try {
       const result = await query(
         `SELECT id, listing_type, title, category, summary, image_names, created_at
@@ -47,7 +75,7 @@ export default async function handler(req, res) {
       summary,
       imageNames = []
     } = req.body || {};
-    const merchantId = parseMerchantId(merchantIdRaw);
+    const merchantId = await resolveAuthorizedMerchantId(req, res, merchantIdRaw);
     if (!merchantId || !listingType || !title || !category || !summary) {
       return res.status(400).json({ error: "Missing required listing fields" });
     }
@@ -81,7 +109,7 @@ export default async function handler(req, res) {
 
   if (req.method === "DELETE") {
     const { merchantId: merchantIdRaw, listingId: listingIdRaw } = req.body || {};
-    const merchantId = parseMerchantId(merchantIdRaw);
+    const merchantId = await resolveAuthorizedMerchantId(req, res, merchantIdRaw);
     const listingId = parseMerchantId(listingIdRaw);
     if (!merchantId || !listingId) {
       return res.status(400).json({ error: "merchantId and listingId are required" });

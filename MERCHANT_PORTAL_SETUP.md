@@ -10,6 +10,10 @@ Copy `.env.example` to `.env` and set:
 - `DATABASE_SSL` (`require` in cloud environments)
 - `ADMIN_EMAIL` (the email that should become admin at registration)
 - `UPLOAD_DIR` (absolute directory for uploaded listing images)
+- `CLOUDINARY_CLOUD_NAME`
+- `CLOUDINARY_API_KEY`
+- `CLOUDINARY_API_SECRET`
+- `CLOUDINARY_UPLOAD_FOLDER` (optional, default: `robotzio`)
 - `STRIPE_SECRET_KEY`
 - `STRIPE_WEBHOOK_SECRET`
 - `STRIPE_CURRENCY` (default: `aed`)
@@ -69,3 +73,6 @@ Merchant flow is now:
 - Max 5 images per listing
 - Image URLs are stored in `merchant_listings.image_names`
 - Admin console has a Media Library section with preview and delete actions
+- Upload behavior:
+  - If Cloudinary env vars are configured, uploads are stored in Cloudinary (recommended for Netlify)
+  - Otherwise, system falls back to local `UPLOAD_DIR`

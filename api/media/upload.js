@@ -1,5 +1,6 @@
 import { mkdir, writeFile } from "node:fs/promises";
 import path from "node:path";
+import { uploadToCloudinary } from "../../lib/cloudinary.js";
 
 const MAX_IMAGES = 5;
 const MAX_SIZE_BYTES = 5 * 1024 * 1024;
@@ -32,10 +33,9 @@ export default async function handler(req, res) {
   if (!images.length) return res.status(400).json({ error: "No images provided" });
   if (images.length > MAX_IMAGES) return res.status(400).json({ error: `Max ${MAX_IMAGES} images allowed` });
 
-  const uploadDir = getUploadDir();
-  await mkdir(uploadDir, { recursive: true });
-
   try {
+    const uploadDir = getUploadDir();
+    await mkdir(uploadDir, { recursive: true });
     const uploaded = [];
     for (const image of images) {
       const decoded = decodeDataUrl(image?.dataUrl);
@@ -51,13 +51,25 @@ export default async function handler(req, res) {
           ? "webp"
           : "jpg";
       const baseName = sanitizeFileName(image?.name || "upload");
-      const finalName = `${Date.now()}-${Math.random().toString(36).slice(2, 8)}-${baseName}.${extension}`;
-      const filePath = path.join(uploadDir, finalName);
-      await writeFile(filePath, decoded.buffer);
-      uploaded.push({
-        fileName: finalName,
-        url: `/uploads/${finalName}`
+      const cloudinaryUpload = await uploadToCloudinary({
+        dataUrl: image?.dataUrl,
+        fileName: baseName
       });
+
+      if (cloudinaryUpload?.url) {
+        uploaded.push({
+          fileName: baseName,
+          url: cloudinaryUpload.url
+        });
+      } else {
+        const finalName = `${Date.now()}-${Math.random().toString(36).slice(2, 8)}-${baseName}.${extension}`;
+        const filePath = path.join(uploadDir, finalName);
+        await writeFile(filePath, decoded.buffer);
+        uploaded.push({
+          fileName: finalName,
+          url: `/uploads/${finalName}`
+        });
+      }
     }
 
     return res.status(200).json({ images: uploaded });

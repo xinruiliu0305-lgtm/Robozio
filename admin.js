@@ -12,7 +12,10 @@ const initAdmin = () => {
   const listingsNode = document.getElementById("admin-listings");
   const paymentsNode = document.getElementById("admin-payments");
   const mediaNode = document.getElementById("admin-media");
+  const mediaMerchantFilterNode = document.getElementById("admin-media-merchant-filter");
+  const mediaListingFilterNode = document.getElementById("admin-media-listing-filter");
   const buyerOrdersNode = document.getElementById("admin-buyer-orders");
+  let mediaCache = [];
 
   const token = getToken();
   if (!token) {
@@ -83,7 +86,17 @@ const initAdmin = () => {
   };
 
   const renderMedia = (items) => {
-    mediaNode.innerHTML = items
+    const merchantFilter = (mediaMerchantFilterNode?.value || "").toLowerCase();
+    const listingFilter = (mediaListingFilterNode?.value || "").toLowerCase();
+    const filtered = items.filter((item) => {
+      const merchantPass =
+        !merchantFilter || String(item.companyName || "").toLowerCase().includes(merchantFilter);
+      const listingPass =
+        !listingFilter || String(item.listingTitle || "").toLowerCase().includes(listingFilter);
+      return merchantPass && listingPass;
+    });
+
+    mediaNode.innerHTML = filtered
       .map(
         (item) => `
           <article class="card pad admin-media-item">
@@ -124,8 +137,13 @@ const initAdmin = () => {
     });
     if (!response.ok) return;
     const payload = await response.json();
-    renderMedia(payload.media || []);
+    mediaCache = payload.media || [];
+    renderMedia(mediaCache);
   };
+
+  [mediaMerchantFilterNode, mediaListingFilterNode].forEach((node) => {
+    node?.addEventListener("input", () => renderMedia(mediaCache));
+  });
 
   const loadOverview = async () => {
     const response = await fetch("/api/admin/overview", {

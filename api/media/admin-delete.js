@@ -2,6 +2,7 @@ import { unlink } from "node:fs/promises";
 import path from "node:path";
 import { query } from "../../lib/db.js";
 import { getSessionUser, getTokenFromRequest } from "../../lib/auth.js";
+import { deleteFromCloudinaryByUrl } from "../../lib/cloudinary.js";
 
 const unauthorized = (res) => res.status(403).json({ error: "Admin access required" });
 
@@ -40,12 +41,15 @@ export default async function handler(req, res) {
       [JSON.stringify(nextUrls), listingIdInt]
     );
 
-    const fileName = String(url).replace("/uploads/", "");
-    const filePath = path.join(getUploadDir(), fileName);
-    try {
-      await unlink(filePath);
-    } catch (_error) {
-      // Ignore missing file; DB remains source of truth.
+    const deletedOnCloudinary = await deleteFromCloudinaryByUrl(String(url));
+    if (!deletedOnCloudinary && String(url).startsWith("/uploads/")) {
+      const fileName = String(url).replace("/uploads/", "");
+      const filePath = path.join(getUploadDir(), fileName);
+      try {
+        await unlink(filePath);
+      } catch (_error) {
+        // Ignore missing file; DB remains source of truth.
+      }
     }
 
     return res.status(200).json({ deleted: true });

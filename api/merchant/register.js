@@ -1,4 +1,5 @@
 import { query } from "../../lib/db.js";
+import { getSessionUser, getTokenFromRequest } from "../../lib/auth.js";
 
 export default async function handler(req, res) {
   if (req.method !== "POST") {
@@ -20,6 +21,16 @@ export default async function handler(req, res) {
   }
 
   try {
+    const token = getTokenFromRequest(req);
+    const user = await getSessionUser(token);
+    if (!user || (user.role !== "merchant" && user.role !== "admin")) {
+      return res.status(403).json({ error: "Seller or admin access required" });
+    }
+    const normalizedEmail = String(email).toLowerCase();
+    if (user.role !== "admin" && normalizedEmail !== String(user.email || "").toLowerCase()) {
+      return res.status(403).json({ error: "You can only submit your own merchant profile" });
+    }
+
     const result = await query(
       `
       INSERT INTO merchants (company_name, contact_name, email, phone, country, company_type, updated_at)
@@ -34,7 +45,7 @@ export default async function handler(req, res) {
         updated_at = NOW()
       RETURNING id, company_name, contact_name, email, phone, country, company_type, onboarding_status
       `,
-      [companyName, contactName, email, phone, country, companyType]
+      [companyName, contactName, normalizedEmail, phone, country, companyType]
     );
 
     return res.status(200).json({

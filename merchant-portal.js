@@ -121,7 +121,10 @@ const initMerchantPortal = () => {
 
   const syncListingsFromBackend = async () => {
     if (!backendReady || !state.profile.merchantId) return;
-    const response = await fetch(`/api/merchant/listings?merchantId=${state.profile.merchantId}`);
+    const token = getToken();
+    const response = await fetch(`/api/merchant/listings?merchantId=${state.profile.merchantId}`, {
+      headers: { Authorization: `Bearer ${token}` }
+    });
     if (!response.ok) {
       throw new Error(await getErrorMessage(response, "Failed to load merchant listings"));
     }
@@ -150,9 +153,13 @@ const initMerchantPortal = () => {
         saveState(state);
 
         if (backendReady) {
+          const token = getToken();
           const response = await fetch("/api/merchant/register", {
             method: "POST",
-            headers: { "Content-Type": "application/json" },
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`
+            },
             body: JSON.stringify(state.profile)
           });
           if (!response.ok) {
@@ -220,6 +227,7 @@ const initMerchantPortal = () => {
         }
 
         if (backendReady && state.profile.merchantId) {
+          const token = getToken();
           let imageNames = record.imageNames;
           if (imageFiles.length) {
             const encodedImages = await Promise.all(
@@ -241,7 +249,10 @@ const initMerchantPortal = () => {
           }
           const response = await fetch("/api/merchant/listings", {
             method: "POST",
-            headers: { "Content-Type": "application/json" },
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`
+            },
             body: JSON.stringify({
               merchantId: state.profile.merchantId,
               listingType: record.type,
@@ -317,9 +328,13 @@ const initMerchantPortal = () => {
         const listingId = Number(button.getAttribute("data-listing-id"));
 
         if (backendReady && state.profile.merchantId && Number.isInteger(listingId) && listingId > 0) {
+          const token = getToken();
           const response = await fetch("/api/merchant/listings", {
             method: "DELETE",
-            headers: { "Content-Type": "application/json" },
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`
+            },
             body: JSON.stringify({
               merchantId: state.profile.merchantId,
               listingId
