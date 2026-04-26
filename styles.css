@@ -883,6 +883,47 @@ textarea { min-height: 110px; resize: vertical; }
   padding-top: 24px;
 }
 
+.about-sections {
+  display: grid;
+  gap: 14px;
+}
+
+.about-block h2 {
+  margin: 0 0 10px;
+  font-size: 1.45rem;
+}
+
+.about-section-title {
+  font-size: clamp(1.55rem, 2.4vw, 2.05rem) !important;
+  font-weight: 800;
+  letter-spacing: 0.2px;
+  background: linear-gradient(120deg, #f1f8ff 10%, #92ebff 55%, #b59eff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 0 28px rgba(0, 209, 255, 0.12);
+}
+
+.about-block p {
+  margin: 0 0 12px;
+  color: #d4e2f6;
+  line-height: 1.78;
+  font-size: 1.02rem;
+  max-width: 90ch;
+}
+
+.about-block p:last-child {
+  margin-bottom: 0;
+}
+
+.about-highlight {
+  font-size: clamp(1.25rem, 2.2vw, 1.62rem);
+  font-weight: 800;
+  color: #eef7ff !important;
+  text-shadow: 0 0 20px rgba(0, 209, 255, 0.2);
+  margin-bottom: 18px !important;
+}
+
 .about-premium-hero {
   position: relative;
   overflow: hidden;
@@ -916,82 +957,6 @@ textarea { min-height: 110px; resize: vertical; }
   bottom: 44px;
   width: min(var(--max), calc(100% - 32px));
   z-index: 2;
-}
-
-.about-hero-grid {
-  display: grid;
-  grid-template-columns: 1.05fr 0.95fr;
-  gap: 16px;
-  align-items: stretch;
-}
-
-.about-image-placeholder {
-  overflow: hidden;
-}
-
-.about-media {
-  min-height: 360px;
-  border-radius: var(--radius);
-  overflow: hidden;
-}
-
-.about-media img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.about-text-card {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.about-text-card p,
-.about-copy p {
-  margin: 0 0 14px;
-  color: #d4e2f6;
-  line-height: 1.72;
-  max-width: 74ch;
-}
-
-.about-text-card p:last-child,
-.about-copy p:last-child {
-  margin-bottom: 0;
-}
-
-.about-copy {
-  max-width: 1080px;
-}
-
-.about-pill-card {
-  border-color: rgba(0, 209, 255, 0.25);
-  background:
-    linear-gradient(130deg, rgba(0, 209, 255, 0.08), rgba(143, 92, 255, 0.08)),
-    rgba(255, 255, 255, 0.02);
-}
-
-.about-service-grid {
-  margin-top: 8px;
-}
-
-.about-service-card {
-  min-height: 144px;
-}
-
-.about-service-icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 38px;
-  height: 38px;
-  border-radius: 10px;
-  border: 1px solid rgba(0, 209, 255, 0.35);
-  background: rgba(0, 209, 255, 0.08);
-  color: #a7e9ff;
-  font-weight: 700;
-  font-size: 0.78rem;
-  margin-bottom: 10px;
 }
 
 .ai-assistant {
@@ -1149,7 +1114,6 @@ textarea { min-height: 110px; resize: vertical; }
   .g-8, .g-6, .g-5, .g-4, .g-2 { grid-template-columns: repeat(2, minmax(0,1fr)); }
   .foot-grid { grid-template-columns: repeat(2,1fr); }
   .mobile-nav-drawer.show { display: block; }
-  .about-hero-grid { grid-template-columns: 1fr; }
   .about-premium-content {
     bottom: 28px;
   }
