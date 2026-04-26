@@ -3,213 +3,152 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>RoboZio | Middle East Robotics Platform</title>
+    <title>RobotZio | Middle East Robotics Platform</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <div class="app">
       <div data-shared="header"></div>
       <main>
-        <section class="section section-hero">
-          <article class="hero hero-banner">
-            <div class="hero-media">
-              <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=2200&q=90" alt="Premium robotics platform banner" />
-              <div class="hero-overlay">
-                <div class="hero-content">
-                  <div class="hero-label">Middle East Robotics Commerce + Platform</div>
-                  <h1 class="hero-title"><span>RoboZio</span> — The Middle East Robotics Platform</h1>
-                  <p class="hero-copy">The first all-in-one robotics platform in the Middle East. Discover, buy, rent, deploy, and maintain robotics solutions with enterprise-grade support across UAE and GCC.</p>
-                  <div class="btn-row">
-                    <a class="btn btn-primary" href="products.html">Shop Robots</a>
-                    <a class="btn btn-alt" href="category.html?group=solutions">Explore Solutions</a>
-                    <button class="btn btn-alt" data-open-modal>Request Enterprise Consultation</button>
-                  </div>
-                  <div class="hero-strip">
-                    <span class="badge">3000+ Products</span>
-                    <span class="badge">Sales + Rental + Service</span>
-                    <span class="badge">UAE Local Technical Support</span>
-                  </div>
-                </div>
+        <section class="section section-hero hero-rotator" data-hero-rotator>
+          <article class="hero-slide active">
+            <img class="hero-bg-img" src="banner-home-1.png" alt="Enterprise robotics deployment in a premium commercial environment" />
+            <div class="hero-content container">
+              <div class="hero-label">Middle East Robotics Marketplace</div>
+              <h1 class="hero-title">RobotZio - <span class="hero-title-highlight">The First All-in-One</span> Robotics Platform in the Middle East</h1>
+              <p class="hero-copy">The first integrated robotics platform in the Middle East. Find everything you need for robotics - products, solutions, services, rental, parts, and partners.</p>
+              <div class="btn-row">
+                <a class="btn btn-primary" href="products.html">Explore Robots</a>
+                <a class="btn btn-alt" href="category.html?group=solutions">Find Solutions</a>
               </div>
-              <div class="hero-floating"><strong>24/7 Platform Ops</strong>Enterprise deployment ready</div>
             </div>
           </article>
-        </section>
-
-        <section class="section">
-          <div class="container">
-            <h2 class="title">Core Categories</h2>
-            <div class="grid g-8">
-              <a class="card pad card-link" href="products.html?category=robots"><h3>Robots</h3><p class="meta">Humanoid, quadruped, delivery and service robots.</p></a>
-              <a class="card pad card-link" href="products.html?category=parts"><h3>Robot Parts</h3><p class="meta">Critical components for integration and upgrades.</p></a>
-              <a class="card pad card-link" href="products.html?category=professional"><h3>Professional Robots</h3><p class="meta">Industry-ready automation systems.</p></a>
-              <a class="card pad card-link" href="products.html?category=education"><h3>Education Kits</h3><p class="meta">STEM and advanced robotics learning kits.</p></a>
-              <a class="card pad card-link" href="products.html?category=tools"><h3>Tools & Equipment</h3><p class="meta">Field setup, diagnostics, and maintenance tools.</p></a>
-              <a class="card pad card-link" href="products.html?category=rental"><h3>Rental & Leasing</h3><p class="meta">Flexible deployment for projects and pilots.</p></a>
-              <a class="card pad card-link" href="support.html"><h3>Maintenance Services</h3><p class="meta">Support plans, repairs, and warranty workflows.</p></a>
-              <a class="card pad card-link" href="category.html?group=solutions"><h3>Industry Solutions</h3><p class="meta">Tailored robotics solutions by vertical.</p></a>
+          <article class="hero-slide">
+            <img class="hero-bg-img" src="banner-home-2.png" alt="Service robot deployment in a modern business setting" />
+            <div class="hero-content container">
+              <div class="hero-label">Early Merchant Campaign</div>
+              <h2 class="hero-title">Free Listing for the First 10 Merchants</h2>
+              <p class="hero-copy">Join RobotZio as an early robotics partner and showcase your products to Middle East buyers.</p>
+              <div class="btn-row">
+                <a class="btn btn-primary" href="#merchant-registration">Join as Merchant</a>
+                <a class="btn btn-alt" href="#merchant-registration">Submit Your Products</a>
+              </div>
             </div>
+          </article>
+          <div class="hero-dots" data-hero-dots>
+            <button class="hero-dot active" type="button" aria-label="Go to slide 1"></button>
+            <button class="hero-dot" type="button" aria-label="Go to slide 2"></button>
           </div>
         </section>
 
         <section class="section">
           <div class="container">
             <h2 class="title">Featured Products</h2>
-            <div class="grid g-3">
-              <article class="card">
-                <div class="product-media"><img src="https://images.unsplash.com/photo-1589254065878-42c9da997008?auto=format&fit=crop&w=900&q=80" alt="Humanoid service robot" /></div>
-                <div class="pad">
-                  <h3>Humanoid Service Robot X1</h3>
-                  <p class="meta">Category: Robots</p>
-                  <p><span class="price">From AED 43,900</span> <span class="badge good">In Stock</span></p>
-                  <p class="rating">★★★★★ <span class="meta">(4.9)</span></p>
-                  <div class="btn-row"><a class="btn btn-primary" href="cart.html">Add to Cart</a><a class="btn btn-alt" href="product.html">Request Quote</a></div>
-                </div>
-              </article>
-              <article class="card">
-                <div class="product-media"><img src="https://images.unsplash.com/photo-1561144257-e32e8efc6c4f?auto=format&fit=crop&w=900&q=80" alt="Autonomous delivery robot" /></div>
-                <div class="pad">
-                  <h3>Autonomous Delivery Robot D2</h3>
-                  <p class="meta">Category: Professional Robots</p>
-                  <p><span class="price">From AED 29,500</span> <span class="badge warn">Preorder</span></p>
-                  <p class="rating">★★★★☆ <span class="meta">(4.6)</span></p>
-                  <div class="btn-row"><a class="btn btn-primary" href="cart.html">Add to Cart</a><a class="btn btn-alt" href="product.html">Request Quote</a></div>
-                </div>
-              </article>
-              <article class="card">
-                <div class="product-media"><img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=900&q=80" alt="Quadruped robot dog" /></div>
-                <div class="pad">
-                  <h3>Quadruped Robot Dog Q4</h3>
-                  <p class="meta">Category: Security Robots</p>
-                  <p><span class="price">From AED 56,000</span> <span class="badge good">In Stock</span></p>
-                  <p class="rating">★★★★★ <span class="meta">(4.8)</span></p>
-                  <div class="btn-row"><a class="btn btn-primary" href="cart.html">Add to Cart</a><a class="btn btn-alt" href="product.html">Request Quote</a></div>
-                </div>
-              </article>
-              <article class="card">
-                <div class="product-media"><img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=900&q=80" alt="Hotel reception robot" /></div>
-                <div class="pad">
-                  <h3>Hotel Reception Robot H1</h3>
-                  <p class="meta">Category: Hospitality</p>
-                  <p><span class="price">From AED 24,900</span> <span class="badge good">In Stock</span></p>
-                  <p class="rating">★★★★☆ <span class="meta">(4.5)</span></p>
-                  <div class="btn-row"><a class="btn btn-primary" href="cart.html">Add to Cart</a><a class="btn btn-alt" href="product.html">Request Quote</a></div>
-                </div>
-              </article>
-              <article class="card">
-                <div class="product-media"><img src="https://images.unsplash.com/photo-1581090700227-1e8e8f8f5f13?auto=format&fit=crop&w=900&q=80" alt="AI security patrol robot" /></div>
-                <div class="pad">
-                  <h3>AI Security Patrol Robot S3</h3>
-                  <p class="meta">Category: Government / Security</p>
-                  <p><span class="price">From AED 61,500</span> <span class="badge warn">Enterprise</span></p>
-                  <p class="rating">★★★★★ <span class="meta">(5.0)</span></p>
-                  <div class="btn-row"><a class="btn btn-primary" href="cart.html">Add to Cart</a><a class="btn btn-alt" href="product.html">Request Quote</a></div>
-                </div>
-              </article>
-              <article class="card">
-                <div class="product-media"><img src="https://images.unsplash.com/photo-1589254066213-a0c9dc853511?auto=format&fit=crop&w=900&q=80" alt="STEM robotics education kit" /></div>
-                <div class="pad">
-                  <h3>STEM Robotics Kit E1</h3>
-                  <p class="meta">Category: Educational Robots</p>
-                  <p><span class="price">From AED 1,150</span> <span class="badge good">In Stock</span></p>
-                  <p class="rating">★★★★☆ <span class="meta">(4.4)</span></p>
-                  <div class="btn-row"><a class="btn btn-primary" href="cart.html">Add to Cart</a><a class="btn btn-alt" href="product.html">Request Quote</a></div>
-                </div>
-              </article>
-            </div>
-          </div>
-        </section>
-
-        <section class="section">
-          <div class="container">
-            <h2 class="title">Shop by Industry</h2>
             <div class="grid g-4">
-              <article class="card pad industry"><h3>Hospitality</h3><p>Autonomous concierge, room delivery, and cleaning workflows.</p></article>
-              <article class="card pad industry"><h3>Logistics</h3><p>Warehouse AMRs for picking, sorting, and route automation.</p></article>
-              <article class="card pad industry"><h3>Security</h3><p>Patrol and surveillance platforms with remote monitoring.</p></article>
-              <article class="card pad industry"><h3>Education</h3><p>Lab and classroom robotics curriculum deployments.</p></article>
-              <article class="card pad industry"><h3>Government</h3><p>Smart city robotics and public service use cases.</p></article>
-              <article class="card pad industry"><h3>Retail</h3><p>Shelf scanning, guest assistance, and fulfillment support.</p></article>
-              <article class="card pad industry"><h3>Healthcare</h3><p>Hospital transport, guidance, and sanitation automation.</p></article>
-              <article class="card pad industry"><h3>Real Estate</h3><p>Facility operations, inspection, and tenant assistance.</p></article>
+              <a class="card product-card-link" href="product.html"><div class="product-media placeholder-media">Product Placement</div><div class="pad"><h3>Atlas Concierge Robot</h3><p class="meta">Apex Robotics | Service Robots</p><p><span class="badge">Featured</span><span class="badge">For Sale</span><span class="badge">New</span></p><p class="price">Request Quote</p><div class="btn-row"><span class="btn btn-alt">View Product</span></div></div></a>
+              <a class="card product-card-link" href="product.html"><div class="product-media placeholder-media">Product Placement</div><div class="pad"><h3>Cargo AMR C7</h3><p class="meta">Nova Mobility | Logistics</p><p><span class="badge">Featured</span><span class="badge">For Rent</span></p><p class="price">From AED 19,000</p><div class="btn-row"><span class="btn btn-alt">View Product</span></div></div></a>
+              <a class="card product-card-link" href="product.html"><div class="product-media placeholder-media">Product Placement</div><div class="pad"><h3>Guardian Patrol K9</h3><p class="meta">SecureBot Middle East | Security</p><p><span class="badge">Featured</span><span class="badge">For Sale</span></p><p class="price">From AED 58,000</p><div class="btn-row"><span class="btn btn-alt">View Product</span></div></div></a>
+              <a class="card product-card-link" href="product.html"><div class="product-media placeholder-media">Product Placement</div><div class="pad"><h3>EduKit AI Pro</h3><p class="meta">STEMWorks | Educational Robots</p><p><span class="badge">Featured</span><span class="badge">For Sale</span></p><p class="price">From AED 1,980</p><div class="btn-row"><span class="btn btn-alt">View Product</span></div></div></a>
+              <a class="card product-card-link" href="product.html"><div class="product-media placeholder-media">Product Placement</div><div class="pad"><h3>CleanBot Prime</h3><p class="meta">Urban Robotics | Cleaning Robots</p><p><span class="badge">Featured</span><span class="badge">For Rent</span></p><p class="price">Request Quote</p><div class="btn-row"><span class="btn btn-alt">View Product</span></div></div></a>
+              <a class="card product-card-link" href="product.html"><div class="product-media placeholder-media">Product Placement</div><div class="pad"><h3>Factory Cobot M5</h3><p class="meta">Mektronix | Industrial Robots</p><p><span class="badge">Featured</span><span class="badge">For Sale</span><span class="badge">New</span></p><p class="price">From AED 72,000</p><div class="btn-row"><span class="btn btn-alt">View Product</span></div></div></a>
+              <a class="card product-card-link" href="product.html"><div class="product-media placeholder-media">Product Placement</div><div class="pad"><h3>Hospital Assistant H2</h3><p class="meta">CareAxis | Healthcare</p><p><span class="badge">Featured</span><span class="badge">Service Supported</span></p><p class="price">Request Quote</p><div class="btn-row"><span class="btn btn-alt">View Product</span></div></div></a>
+              <a class="card product-card-link" href="product.html"><div class="product-media placeholder-media">Product Placement</div><div class="pad"><h3>Expo Welcome Unit</h3><p class="meta">EventBot | Hospitality</p><p><span class="badge">Featured</span><span class="badge">For Rent</span><span class="badge">New</span></p><p class="price">From AED 9,500</p><div class="btn-row"><span class="btn btn-alt">View Product</span></div></div></a>
             </div>
-          </div>
-        </section>
-
-        <section class="section">
-          <div class="container card pad">
-            <h2 class="title">Rental & Leasing</h2>
-            <p class="sub">RoboZio enables event rental, monthly leasing, trial deployment, and enterprise subscriptions for flexible scaling.</p>
-            <div class="btn-row"><a class="btn btn-primary" href="category.html?group=rental">Start with Rental</a></div>
+            <div class="btn-row" style="margin-top:16px;"><a class="btn btn-primary" href="featured.html">View All Featured Products</a></div>
           </div>
         </section>
 
         <section class="section">
           <div class="container">
-            <h2 class="title">Services Platform</h2>
-            <div class="grid g-3">
-              <article class="card pad"><h3>Maintenance & Repair</h3><p class="meta">Preventive and corrective support for deployed fleets.</p></article>
-              <article class="card pad"><h3>Spare Parts Supply</h3><p class="meta">Fast parts sourcing and fulfillment across GCC markets.</p></article>
-              <article class="card pad"><h3>Integration Support</h3><p class="meta">Enterprise integration with facilities and software systems.</p></article>
-              <article class="card pad"><h3>Robot Training</h3><p class="meta">Operator and team enablement programs.</p></article>
-              <article class="card pad"><h3>Local Technical Support</h3><p class="meta">Regional experts and on-site response options.</p></article>
-              <article class="card pad"><h3>Future Data Platform</h3><p class="meta">Telemetry, service intelligence, and performance analytics.</p></article>
-            </div>
-          </div>
-        </section>
+            <h2 class="title">Marketplace Core Categories</h2>
+            <p class="sub">Explore products and services by category. Visual cards are designed for fast scanning.</p>
+            <div class="grid g-5 category-grid-icon">
+              <a class="card card-link category-photo-card" href="featured.html"><div class="category-photo"><img src="https://images.unsplash.com/photo-1589254065878-42c9da997008?auto=format&fit=crop&w=900&q=80" alt="Featured humanoid robot" /></div><div class="pad"><h3>Featured Products</h3></div></a>
+              <a class="card card-link category-photo-card" href="products.html"><div class="category-photo"><img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=900&q=80" alt="Robot parts and engineering components" /></div><div class="pad"><h3>Robot Parts</h3></div></a>
+              <a class="card card-link category-photo-card" href="products.html"><div class="category-photo"><img src="https://images.unsplash.com/photo-1589254066213-a0c9dc853511?auto=format&fit=crop&w=900&q=80" alt="Educational robotics kit" /></div><div class="pad"><h3>Robotics Kits</h3></div></a>
+              <a class="card card-link category-photo-card" href="category.html?group=solutions"><div class="category-photo"><img src="https://images.unsplash.com/photo-1596558450268-9c27524ba856?auto=format&fit=crop&w=900&q=80" alt="Robot rental for events" /></div><div class="pad"><h3>Robot Rental</h3></div></a>
+              <a class="card card-link category-photo-card" href="category.html?group=solutions"><div class="category-photo"><img src="https://images.unsplash.com/photo-1581091870622-2d4d9b7642ff?auto=format&fit=crop&w=900&q=80" alt="Child learning robotics in education class" /></div><div class="pad"><h3>Education Solutions</h3></div></a>
 
-        <section class="section" id="brands">
-          <div class="container">
-            <h2 class="title">Brands & Partners</h2>
-            <div class="grid g-5">
-              <div class="card pad">Brand Logo</div>
-              <div class="card pad">Brand Logo</div>
-              <div class="card pad">Brand Logo</div>
-              <div class="card pad">Partner Logo</div>
-              <div class="card pad">Partner Logo</div>
+              <a class="card card-link category-photo-card" href="products.html"><div class="category-photo"><img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=900&q=80" alt="Service robot in hospitality venue" /></div><div class="pad"><h3>Service Robots</h3></div></a>
+              <a class="card card-link category-photo-card" href="category.html?group=solutions"><div class="category-photo"><img src="https://images.unsplash.com/photo-1565043589221-1a6fd9ae45c7?auto=format&fit=crop&w=900&q=80" alt="Industrial robotics automation line" /></div><div class="pad"><h3>Industrial Solutions</h3></div></a>
+              <a class="card card-link category-photo-card" href="category.html?group=solutions"><div class="category-photo"><img src="https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&w=900&q=80" alt="After-sales robot repair support" /></div><div class="pad"><h3>After-sales & Repair</h3></div></a>
+              <a class="card card-link category-photo-card" href="category.html?group=solutions"><div class="category-photo"><img src="https://images.unsplash.com/photo-1518773553398-650c184e0bb3?auto=format&fit=crop&w=900&q=80" alt="Robot training workshop session" /></div><div class="pad"><h3>Robot Training</h3></div></a>
+              <a class="card card-link category-photo-card" href="category.html?group=solutions"><div class="category-photo"><img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=900&q=80" alt="Data collection and analytics dashboard" /></div><div class="pad"><h3>Data Collection</h3></div></a>
             </div>
           </div>
         </section>
 
         <section class="section">
           <div class="container">
-            <h2 class="title">Why RoboZio</h2>
-            <div class="grid g-5">
-              <article class="card pad"><h3>Middle East Focused</h3></article>
-              <article class="card pad"><h3>Local Support</h3></article>
-              <article class="card pad"><h3>Enterprise Deployment</h3></article>
-              <article class="card pad"><h3>Multi-category Marketplace</h3></article>
-              <article class="card pad"><h3>Sales + Rental + Service + Integration</h3></article>
-            </div>
-          </div>
-        </section>
-
-        <section class="section">
-          <div class="container card pad">
-            <h2 class="title">Build your robotics capability with RoboZio</h2>
-            <form class="form-grid">
-              <div><label>Name</label><input placeholder="Your full name" /></div>
-              <div><label>Company</label><input placeholder="Company name" /></div>
-              <div><label>Email</label><input type="email" placeholder="name@company.com" /></div>
-              <div><label>Country</label><select><option>UAE</option><option>Saudi Arabia</option><option>Qatar</option><option>Kuwait</option><option>Oman</option><option>Bahrain</option></select></div>
-              <div><label>Interested in</label><select><option>Buy</option><option>Rent</option><option>Service</option><option>Partnership</option></select></div>
+            <h2 class="title">Smart RFQ for Buyers</h2>
+            <p class="sub">Submit one request and get matched quotations from suitable robotics merchants.</p>
+            <form id="buyer-rfq-form" class="form-grid card pad" method="POST" action="https://formsubmit.co/xinruiliu0305@gmail.com">
+              <input type="hidden" name="_subject" value="New RobotZio Smart RFQ Submission" />
+              <input type="hidden" name="_next" value="https://your-domain.com/thank-you.html" />
+              <input type="hidden" name="_captcha" value="false" />
+              <div><label>Company Name</label><input name="company_name" placeholder="Your company name" required /></div>
+              <div><label>Contact Person</label><input name="contact_person" placeholder="Procurement contact" required /></div>
+              <div><label>Email</label><input name="email" type="email" placeholder="name@company.com" required /></div>
+              <div><label>Phone / WhatsApp</label><input name="phone_whatsapp" placeholder="+971 ..." required /></div>
+              <div><label>Use Case</label><select name="use_case"><option>Hospitality</option><option>Security</option><option>Logistics</option><option>Education</option><option>Healthcare</option></select></div>
+              <div><label>Need Type</label><select name="need_type"><option>Purchase</option><option>Rental</option><option>Integrated Solution</option><option>Service Support</option></select></div>
+              <div><label>Budget Range</label><input name="budget_range" placeholder="e.g. AED 50,000 - 120,000" /></div>
+              <div><label>Deployment Timeline</label><input name="deployment_timeline" placeholder="e.g. Within 45 days" /></div>
+              <div><label>Country / City</label><input name="region" placeholder="Dubai, UAE" required /></div>
+              <div><label>Quantity</label><input name="quantity" placeholder="Estimated units" /></div>
+              <div style="grid-column: 1 / -1;"><label>Technical or Project Requirements</label><textarea name="requirements" placeholder="Share detailed requirements and support expectations" required></textarea></div>
+              <div class="btn-row" style="grid-column: 1 / -1;">
+                <button class="btn btn-primary" type="submit">Submit RFQ</button>
+                <a class="btn btn-alt" href="support.html">Talk to Solution Advisor</a>
+              </div>
             </form>
-            <div class="btn-row" style="margin-top:12px;"><button class="btn btn-primary" type="button">Submit Inquiry</button></div>
+          </div>
+        </section>
+
+        <section class="section" id="partnerships">
+          <div class="container">
+            <h2 class="title">Trusted Robotics Partners</h2>
+            <p class="sub">RobotZio collaborates with robotics manufacturers, rental providers, service companies, system integrators, and technology platforms to support robotics adoption across the Middle East.</p>
+            <div class="grid g-5 partner-grid">
+              <article class="card pad partner-logo">Partner Platform</article>
+              <article class="card pad partner-logo">Robotics Brand</article>
+              <article class="card pad partner-logo">Supplier Network</article>
+              <article class="card pad partner-logo">Rental Provider</article>
+              <article class="card pad partner-logo">Service Partner</article>
+              <article class="card pad partner-logo">Integrator Partner</article>
+              <article class="card pad partner-logo">Technology Partner</article>
+              <article class="card pad partner-logo">Enterprise Partner</article>
+              <article class="card pad partner-logo">Regional Distributor</article>
+              <article class="card pad partner-logo">Data Platform</article>
+            </div>
+          </div>
+        </section>
+
+        <section class="section" id="merchant-registration">
+          <div class="container card pad">
+            <h2 class="title">Join RobotZio as a Robotics Merchant</h2>
+            <p class="sub">List your robots, parts, rental services, and solutions on the Middle East's first all-in-one robotics platform.</p>
+            <form id="merchant-form" class="form-grid" method="POST" action="https://formsubmit.co/xinruiliu0305@gmail.com">
+              <input type="hidden" name="_subject" value="New RobotZio Merchant Application" />
+              <input type="hidden" name="_next" value="https://your-domain.com/thank-you.html" />
+              <input type="hidden" name="_captcha" value="false" />
+              <div><label>Company Name</label><input name="company_name" placeholder="Your company legal name" required /></div>
+              <div><label>Contact Person</label><input name="contact_person" placeholder="Contact person full name" required /></div>
+              <div><label>Email</label><input name="email" type="email" placeholder="name@company.com" required /></div>
+              <div><label>Phone / WhatsApp</label><input name="phone_whatsapp" placeholder="+971 ..." required /></div>
+              <div><label>Country</label><input name="country" placeholder="Country / Region" required /></div>
+              <div><label>Company Type</label><select name="company_type"><option>Manufacturer</option><option>Distributor</option><option>Rental Provider</option><option>Service Provider</option><option>System Integrator</option></select></div>
+              <div><label>Product / Service Category</label><input name="category" placeholder="e.g. Service Robots, Parts, Rentals" /></div>
+              <div><label>Website</label><input name="website" placeholder="https://yourcompany.com" /></div>
+              <div style="grid-column: 1 / -1;"><label>Message</label><textarea name="message" placeholder="Tell us about your products and target market"></textarea></div>
+              <div style="grid-column: 1 / -1;"><label>Upload Product Catalog</label><input type="text" name="catalog_link" placeholder="Catalog link (Google Drive / Website URL)" /></div>
+            </form>
+            <div class="btn-row" style="margin-top:12px;"><button class="btn btn-primary" type="submit" form="merchant-form">Submit Merchant Application</button></div>
+            <p class="meta">First 10 approved merchants can receive free listing exposure during the launch phase.</p>
           </div>
         </section>
       </main>
       <div data-shared="footer"></div>
-    </div>
-
-    <div class="modal" data-modal>
-      <article class="card pad modal-card">
-        <h3>Enterprise Consultation</h3>
-        <p class="meta">Share your use case and a RoboZio solution specialist will contact you.</p>
-        <div class="btn-row">
-          <a class="btn btn-primary" href="support.html">Open Consultation Form</a>
-          <button class="btn btn-alt" data-close-modal type="button">Close</button>
-        </div>
-      </article>
     </div>
 
     <script src="app.js"></script>

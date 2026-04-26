@@ -3,34 +3,34 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>RoboZio | Checkout</title>
+    <title>RobotZio | Submit Quote Request</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <div class="app">
       <div data-shared="header"></div>
       <main class="container section">
-        <h1 class="title">Payment Method</h1>
+        <h1 class="title">Submit Quote Request</h1>
         <section class="cart-grid">
           <article class="card panel">
-            <h3>Choose Payment</h3>
-            <p class="meta"><input type="radio" name="pay" checked /> Credit / Debit Card</p>
-            <p class="meta"><input type="radio" name="pay" /> Bank Transfer</p>
-            <p class="meta"><input type="radio" name="pay" /> Enterprise Invoice</p>
+            <h3>Procurement Preference</h3>
+            <p class="meta"><input type="radio" name="pay" checked /> Request Purchase Quotation</p>
+            <p class="meta"><input type="radio" name="pay" /> Request Rental Proposal</p>
+            <p class="meta"><input type="radio" name="pay" /> Request Integrated Solution Proposal</p>
             <div class="form-grid">
-              <div><label>Cardholder Name</label><input /></div>
-              <div><label>Card Number</label><input /></div>
-              <div><label>Expiry</label><input /></div>
-              <div><label>CVV</label><input /></div>
+              <div><label>Company Procurement Contact</label><input /></div>
+              <div><label>Target Budget Range</label><input /></div>
+              <div><label>Requested Delivery Timeline</label><input /></div>
+              <div><label>Preferred Contact Time</label><input /></div>
             </div>
           </article>
           <aside class="card panel">
-            <h3>Final Summary</h3>
-            <p class="meta">Products: AED 50,150</p>
-            <p class="meta">Shipping: AED 450</p>
-            <p class="meta">VAT: AED 2,530</p>
-            <p class="price">Total: AED 53,130</p>
-            <div class="btn-row"><button class="btn btn-primary">Place Order</button><a class="btn btn-alt" href="cart.html">Back</a></div>
+            <h3>Final Request Summary</h3>
+            <p class="meta">Requested products: 3</p>
+            <p class="meta">Suppliers involved: 3 merchants</p>
+            <p class="meta">Deployment region: UAE + Saudi Arabia</p>
+            <p class="price">Submission mode: B2B quotation request</p>
+            <div class="btn-row"><a class="btn btn-primary" href="thank-you.html">Submit Request</a><a class="btn btn-alt" href="cart.html">Back</a></div>
           </aside>
         </section>
       </main>

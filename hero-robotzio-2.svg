@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2400 900" role="img" aria-label="Robotics marketplace growth visual with integrated rising data curve">
+  <defs>
+    <linearGradient id="bg2" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#050b17"/>
+      <stop offset="60%" stop-color="#0a1a31"/>
+      <stop offset="100%" stop-color="#081325"/>
+    </linearGradient>
+    <radialGradient id="blueGlow" cx="70%" cy="30%" r="35%">
+      <stop offset="0%" stop-color="#1de1ff" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#1de1ff" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="purpleGlow" cx="86%" cy="62%" r="26%">
+      <stop offset="0%" stop-color="#8f5cff" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#8f5cff" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="curveGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <linearGradient id="curveGrad" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0%" stop-color="#44ecff"/>
+      <stop offset="100%" stop-color="#39c9ff"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="2400" height="900" fill="url(#bg2)"/>
+  <rect width="2400" height="900" fill="url(#blueGlow)"/>
+  <rect width="2400" height="900" fill="url(#purpleGlow)"/>
+
+  <g opacity="0.22" stroke="#2cdfff" stroke-width="1">
+    <path d="M0 170h2400"/>
+    <path d="M0 260h2400"/>
+    <path d="M0 350h2400"/>
+    <path d="M0 440h2400"/>
+    <path d="M0 530h2400"/>
+    <path d="M0 620h2400"/>
+    <path d="M400 120v700"/>
+    <path d="M700 120v700"/>
+    <path d="M1000 120v700"/>
+    <path d="M1300 120v700"/>
+    <path d="M1600 120v700"/>
+    <path d="M1900 120v700"/>
+    <path d="M2200 120v700"/>
+  </g>
+
+  <g opacity="0.22" fill="#9db8e3">
+    <circle cx="1610" cy="340" r="56"/>
+    <rect x="1562" y="412" width="96" height="128" rx="34"/>
+    <rect x="1523" y="430" width="38" height="96" rx="17"/>
+    <rect x="1660" y="430" width="38" height="96" rx="17"/>
+  </g>
+  <g opacity="0.2" fill="#8eaad3">
+    <circle cx="1772" cy="390" r="50"/>
+    <rect x="1732" y="454" width="80" height="108" rx="30"/>
+  </g>
+  <g opacity="0.15" fill="#c3d6f0">
+    <circle cx="1930" cy="430" r="45"/>
+    <rect x="1896" y="490" width="68" height="92" rx="26"/>
+  </g>
+
+  <g>
+    <path d="M220 730 L520 704 L790 658 L1050 572 L1300 514 L1565 396 L1868 250 L2180 108"
+      fill="none" stroke="url(#curveGrad)" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" filter="url(#curveGlow)"/>
+    <path d="M220 730 L520 704 L790 658 L1050 572 L1300 514 L1565 396 L1868 250 L2180 108"
+      fill="none" stroke="#2be1ff" stroke-opacity="0.3" stroke-width="22" stroke-linecap="round" stroke-linejoin="round"/>
+    <g fill="#2be1ff">
+      <circle cx="520" cy="704" r="9"/>
+      <circle cx="790" cy="658" r="9"/>
+      <circle cx="1050" cy="572" r="9"/>
+      <circle cx="1300" cy="514" r="9"/>
+      <circle cx="1565" cy="396" r="9"/>
+      <circle cx="1868" cy="250" r="9"/>
+      <circle cx="2180" cy="108" r="11"/>
+    </g>
+    <path d="M2144 106 L2180 108 L2164 142" fill="none" stroke="#2be1ff" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M220 815 L2180 815" stroke="#35dfff" stroke-opacity="0.24" stroke-width="3"/>
+  </g>
+</svg>

@@ -1,0 +1,10 @@
+{
+  "name": "robotzio-site",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "build:kb": "node scripts/build-kb.mjs",
+    "dev": "vercel dev"
+  }
+}

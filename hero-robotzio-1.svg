@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2400 900" role="img" aria-label="Advanced humanoid robot in futuristic enterprise lab">
+  <defs>
+    <linearGradient id="bg1" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#050c18"/>
+      <stop offset="45%" stop-color="#0a1730"/>
+      <stop offset="75%" stop-color="#0c2140"/>
+      <stop offset="100%" stop-color="#071425"/>
+    </linearGradient>
+    <radialGradient id="textFog" cx="22%" cy="44%" r="48%">
+      <stop offset="0%" stop-color="#04101f" stop-opacity="0.85"/>
+      <stop offset="100%" stop-color="#04101f" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glow1" cx="72%" cy="36%" r="32%">
+      <stop offset="0%" stop-color="#1de1ff" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#1de1ff" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glow2" cx="78%" cy="58%" r="25%">
+      <stop offset="0%" stop-color="#8f5cff" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#8f5cff" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="metal" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f4f8ff"/>
+      <stop offset="38%" stop-color="#a9bede"/>
+      <stop offset="100%" stop-color="#60799f"/>
+    </linearGradient>
+    <linearGradient id="glass" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#10233c" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#0d1d33" stop-opacity="0.85"/>
+    </linearGradient>
+    <filter id="softGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <rect width="2400" height="900" fill="url(#bg1)"/>
+  <rect width="2400" height="900" fill="url(#textFog)"/>
+  <rect width="2400" height="900" fill="url(#glow1)"/>
+  <rect width="2400" height="900" fill="url(#glow2)"/>
+
+  <g opacity="0.2" stroke="#2adfff" stroke-width="1">
+    <path d="M0 160h1300"/>
+    <path d="M0 250h1200"/>
+    <path d="M0 340h1400"/>
+    <path d="M0 430h1100"/>
+    <path d="M0 520h1250"/>
+  </g>
+
+  <g transform="translate(1450,70)">
+    <ellipse cx="420" cy="760" rx="260" ry="44" fill="#07101e" opacity="0.72"/>
+    <rect x="274" y="110" width="300" height="315" rx="142" fill="url(#metal)"/>
+    <rect x="298" y="138" width="252" height="255" rx="118" fill="url(#glass)"/>
+    <circle cx="424" cy="254" r="90" fill="#09162b" opacity="0.92"/>
+    <ellipse cx="424" cy="228" rx="70" ry="28" fill="#102741" opacity="0.65"/>
+    <circle cx="382" cy="250" r="15" fill="#39e5ff" filter="url(#softGlow)"/>
+    <circle cx="466" cy="250" r="15" fill="#39e5ff" filter="url(#softGlow)"/>
+    <path d="M390 293 Q424 310 458 293" stroke="#33e3ff" stroke-width="6" fill="none" stroke-linecap="round"/>
+
+    <rect x="266" y="442" width="316" height="292" rx="104" fill="url(#metal)"/>
+    <rect x="120" y="472" width="130" height="224" rx="58" fill="url(#metal)"/>
+    <rect x="598" y="472" width="130" height="224" rx="58" fill="url(#metal)"/>
+    <rect x="316" y="704" width="82" height="164" rx="36" fill="url(#metal)"/>
+    <rect x="450" y="704" width="82" height="164" rx="36" fill="url(#metal)"/>
+    <rect x="332" y="844" width="94" height="26" rx="11" fill="#c1d6f3"/>
+    <rect x="438" y="844" width="94" height="26" rx="11" fill="#c1d6f3"/>
+
+    <rect x="360" y="534" width="130" height="9" rx="4" fill="#22dfff" filter="url(#softGlow)"/>
+    <rect x="308" y="566" width="234" height="9" rx="4" fill="#22dfff" opacity="0.9"/>
+    <circle cx="424" cy="612" r="19" fill="#0c2138" stroke="#2de0ff" stroke-width="4"/>
+  </g>
+
+  <g opacity="0.26">
+    <circle cx="1860" cy="130" r="7" fill="#32e3ff"/>
+    <circle cx="1910" cy="170" r="5" fill="#32e3ff"/>
+    <circle cx="1970" cy="210" r="7" fill="#32e3ff"/>
+    <circle cx="2050" cy="250" r="5" fill="#32e3ff"/>
+  </g>
+</svg>

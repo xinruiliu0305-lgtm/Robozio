@@ -3,40 +3,50 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>RoboZio | Product Listing</title>
+    <title>RobotZio | Product Listing</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <div class="app">
       <div data-shared="header"></div>
       <main class="container section" data-page="products">
-        <h1 class="title">Robotics Products</h1>
-        <p class="sub">Search results: <strong>184 products</strong> | Prices are market reference start prices (AED, excl. VAT) and may vary by configuration.</p>
+        <h1 class="title">Robots Marketplace Listing</h1>
+        <p class="sub">Find robotics products from manufacturers, distributors, rental providers, and service partners across the Middle East.</p>
         <section class="split">
           <aside class="card panel">
             <h3>Filters</h3>
             <form id="product-filters">
               <div class="filter-block">
-                <strong>Category</strong>
-                <label class="filter-option"><input type="checkbox" name="category" value="robots" /> Robots</label>
-                <label class="filter-option"><input type="checkbox" name="category" value="professional" /> Professional Robots</label>
-                <label class="filter-option"><input type="checkbox" name="category" value="security" /> Security</label>
-                <label class="filter-option"><input type="checkbox" name="category" value="hospitality" /> Hospitality</label>
-                <label class="filter-option"><input type="checkbox" name="category" value="education" /> Education</label>
+                <strong>Use Case / Application</strong>
+                <label class="filter-option"><input type="checkbox" name="useCase" value="hospitality" /> Hospitality</label>
+                <label class="filter-option"><input type="checkbox" name="useCase" value="education" /> Education</label>
+                <label class="filter-option"><input type="checkbox" name="useCase" value="security" /> Security</label>
+                <label class="filter-option"><input type="checkbox" name="useCase" value="logistics" /> Logistics</label>
+                <label class="filter-option"><input type="checkbox" name="useCase" value="healthcare" /> Healthcare</label>
+                <label class="filter-option"><input type="checkbox" name="useCase" value="retail" /> Retail</label>
+                <label class="filter-option"><input type="checkbox" name="useCase" value="industrial" /> Industrial</label>
+                <label class="filter-option"><input type="checkbox" name="useCase" value="events" /> Events</label>
               </div>
               <div class="filter-block">
-                <strong>Price Range</strong>
-                <label class="filter-option"><input type="radio" name="price" value="all" checked /> All</label>
-                <label class="filter-option"><input type="radio" name="price" value="0-10000" /> Under AED 10,000</label>
-                <label class="filter-option"><input type="radio" name="price" value="10001-40000" /> AED 10,001 - 40,000</label>
-                <label class="filter-option"><input type="radio" name="price" value="40001-100000" /> Above AED 40,000</label>
+                <strong>Supplier Type</strong>
+                <label class="filter-option"><input type="checkbox" name="supplierType" value="manufacturer" /> Manufacturer</label>
+                <label class="filter-option"><input type="checkbox" name="supplierType" value="distributor" /> Distributor</label>
+                <label class="filter-option"><input type="checkbox" name="supplierType" value="rental-provider" /> Rental Provider</label>
+                <label class="filter-option"><input type="checkbox" name="supplierType" value="service-provider" /> Service Provider</label>
               </div>
               <div class="filter-block">
                 <strong>Availability</strong>
-                <label class="filter-option"><input type="checkbox" name="availability" value="in-stock" /> In stock</label>
-                <label class="filter-option"><input type="checkbox" name="availability" value="preorder" /> Preorder</label>
-                <label class="filter-option"><input type="checkbox" name="availability" value="enterprise" /> Enterprise</label>
+                <label class="filter-option"><input type="checkbox" name="availability" value="for-sale" /> Purchase Available</label>
+                <label class="filter-option"><input type="checkbox" name="availability" value="for-rent" /> Rental Available</label>
+                <label class="filter-option"><input type="checkbox" name="availability" value="service-supported" /> Service Support Available</label>
               </div>
+              <div class="filter-block"><strong>Brand</strong><input placeholder="e.g. RoboTech" /></div>
+              <div class="filter-block"><strong>Price Range</strong><input placeholder="Any" /></div>
+              <div class="filter-block"><strong>Product Type</strong><input placeholder="Any" /></div>
+              <div class="filter-block"><strong>Country / Region</strong><input placeholder="UAE, Saudi Arabia..." /></div>
+              <div class="filter-block"><strong>Lead Time</strong><input placeholder="Immediate / 2 weeks..." /></div>
+              <div class="filter-block"><strong>Warranty Available</strong><input placeholder="Yes / No" /></div>
+              <div class="filter-block"><strong>New / Featured</strong><input placeholder="New, Featured" /></div>
               <div class="btn-row" style="margin-top: 10px;">
                 <button class="btn btn-primary" type="button" id="reset-filters">Reset Filters</button>
               </div>
@@ -47,19 +57,20 @@
             <div class="sort-row">
               <div class="meta" id="results-count">Showing 6 products</div>
               <select class="select-chip">
-                <option>Popularity</option>
+                <option>Featured</option>
+                <option>Newest</option>
                 <option>Price low to high</option>
                 <option>Price high to low</option>
-                <option>Newest</option>
+                <option>Most requested</option>
               </select>
             </div>
             <div class="grid g-3" id="product-grid">
-              <article class="card product-item" data-category="robots" data-availability="in-stock" data-price="43900"><div class="product-media"><img src="https://images.unsplash.com/photo-1589254065878-42c9da997008?auto=format&fit=crop&w=900&q=80" alt="Humanoid service robot" /></div><div class="pad"><h3>Humanoid Service Robot X1</h3><p class="meta">Robots</p><p class="price">From AED 43,900</p><p class="rating">★★★★★</p><div class="btn-row"><a class="btn btn-primary" href="cart.html">Add to Cart</a><a class="btn btn-alt" href="product.html">Quote</a></div></div></article>
-              <article class="card product-item" data-category="professional" data-availability="preorder" data-price="29500"><div class="product-media"><img src="https://images.unsplash.com/photo-1561144257-e32e8efc6c4f?auto=format&fit=crop&w=900&q=80" alt="Autonomous delivery robot" /></div><div class="pad"><h3>Autonomous Delivery Robot D2</h3><p class="meta">Professional Robots</p><p class="price">From AED 29,500</p><p class="rating">★★★★☆</p><div class="btn-row"><a class="btn btn-primary" href="cart.html">Add to Cart</a><a class="btn btn-alt" href="product.html">Quote</a></div></div></article>
-              <article class="card product-item" data-category="security" data-availability="in-stock" data-price="56000"><div class="product-media"><img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=900&q=80" alt="Quadruped robot dog" /></div><div class="pad"><h3>Quadruped Robot Dog Q4</h3><p class="meta">Security</p><p class="price">From AED 56,000</p><p class="rating">★★★★★</p><div class="btn-row"><a class="btn btn-primary" href="cart.html">Add to Cart</a><a class="btn btn-alt" href="product.html">Quote</a></div></div></article>
-              <article class="card product-item" data-category="hospitality" data-availability="in-stock" data-price="24900"><div class="product-media"><img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=900&q=80" alt="Hotel reception robot" /></div><div class="pad"><h3>Hotel Reception Robot H1</h3><p class="meta">Hospitality</p><p class="price">From AED 24,900</p><p class="rating">★★★★☆</p><div class="btn-row"><a class="btn btn-primary" href="cart.html">Add to Cart</a><a class="btn btn-alt" href="product.html">Quote</a></div></div></article>
-              <article class="card product-item" data-category="security" data-availability="enterprise" data-price="61500"><div class="product-media"><img src="https://images.unsplash.com/photo-1581090700227-1e8e8f8f5f13?auto=format&fit=crop&w=900&q=80" alt="AI security patrol robot" /></div><div class="pad"><h3>AI Security Patrol Robot S3</h3><p class="meta">Government</p><p class="price">From AED 61,500</p><p class="rating">★★★★★</p><div class="btn-row"><a class="btn btn-primary" href="cart.html">Add to Cart</a><a class="btn btn-alt" href="product.html">Quote</a></div></div></article>
-              <article class="card product-item" data-category="education" data-availability="in-stock" data-price="1150"><div class="product-media"><img src="https://images.unsplash.com/photo-1589254066213-a0c9dc853511?auto=format&fit=crop&w=900&q=80" alt="STEM robotics kit" /></div><div class="pad"><h3>STEM Robotics Kit E1</h3><p class="meta">Education</p><p class="price">From AED 1,150</p><p class="rating">★★★★☆</p><div class="btn-row"><a class="btn btn-primary" href="cart.html">Add to Cart</a><a class="btn btn-alt" href="product.html">Quote</a></div></div></article>
+              <article class="card product-item" data-category="hospitality" data-availability="for-sale" data-supplier-type="manufacturer"><div class="product-media placeholder-media">Image Placeholder</div><div class="pad"><h3>Atlas Concierge Robot</h3><p class="meta">Service Robots | Apex Robotics</p><p class="meta">Availability: In Stock | Lead Time: 7 days</p><p><span class="badge">For Sale</span><span class="badge">Service Supported</span></p><p class="price">From AED 42,500</p><div class="btn-row"><a class="btn btn-primary" href="product.html">View Details</a><a class="btn btn-alt" href="product.html">Request Quote</a></div></div></article>
+              <article class="card product-item" data-category="logistics" data-availability="for-rent" data-supplier-type="rental-provider"><div class="product-media placeholder-media">Image Placeholder</div><div class="pad"><h3>Cargo AMR C7</h3><p class="meta">Delivery Robots | Nova Mobility Rentals</p><p class="meta">Availability: Rental Ready | Lead Time: 3 days</p><p><span class="badge">For Rent</span><span class="badge">Service Supported</span></p><p class="price">Request Quote</p><div class="btn-row"><a class="btn btn-primary" href="product.html">View Details</a><a class="btn btn-alt" href="product.html">Request Quote</a></div></div></article>
+              <article class="card product-item" data-category="security" data-availability="for-sale" data-supplier-type="distributor"><div class="product-media placeholder-media">Image Placeholder</div><div class="pad"><h3>Guardian Patrol K9</h3><p class="meta">Robot Dogs | SecureBot Distribution</p><p class="meta">Availability: In Stock | Lead Time: 10 days</p><p><span class="badge">For Sale</span><span class="badge">Warranty</span></p><p class="price">From AED 58,000</p><div class="btn-row"><a class="btn btn-primary" href="product.html">View Details</a><a class="btn btn-alt" href="product.html">Request Quote</a></div></div></article>
+              <article class="card product-item" data-category="education" data-availability="for-sale" data-supplier-type="manufacturer"><div class="product-media placeholder-media">Image Placeholder</div><div class="pad"><h3>EduKit AI Pro</h3><p class="meta">Robotics Kits | STEMWorks</p><p class="meta">Availability: In Stock | Lead Time: 5 days</p><p><span class="badge">For Sale</span><span class="badge">New</span></p><p class="price">From AED 1,980</p><div class="btn-row"><a class="btn btn-primary" href="product.html">View Details</a><a class="btn btn-alt" href="product.html">Request Quote</a></div></div></article>
+              <article class="card product-item" data-category="industrial" data-availability="service-supported" data-supplier-type="service-provider"><div class="product-media placeholder-media">Image Placeholder</div><div class="pad"><h3>Factory Cobot M5</h3><p class="meta">Industrial Robots | Mektronix Integration</p><p class="meta">Availability: Build to Order | Lead Time: 21 days</p><p><span class="badge">For Sale</span><span class="badge">Service Supported</span></p><p class="price">Request Quote</p><div class="btn-row"><a class="btn btn-primary" href="product.html">View Details</a><a class="btn btn-alt" href="product.html">Request Quote</a></div></div></article>
+              <article class="card product-item" data-category="healthcare" data-availability="for-rent" data-supplier-type="service-provider"><div class="product-media placeholder-media">Image Placeholder</div><div class="pad"><h3>Hospital Assistant H2</h3><p class="meta">Service Robots | CareAxis Services</p><p class="meta">Availability: Available | Lead Time: 14 days</p><p><span class="badge">For Rent</span><span class="badge">Service Supported</span></p><p class="price">Request Quote</p><div class="btn-row"><a class="btn btn-primary" href="product.html">View Details</a><a class="btn btn-alt" href="product.html">Request Quote</a></div></div></article>
             </div>
             <p class="meta" id="empty-products-message" style="display:none; margin-top: 12px;">No products match current filters.</p>
             <div class="pagination" style="margin-top:14px;">
